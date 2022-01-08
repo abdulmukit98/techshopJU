@@ -26,6 +26,16 @@ import com.squareup.picasso.Picasso;
 import edu.cseju.techshopju.model.DatabaseHelper;
 import edu.cseju.techshopju.model.Product;
 
+/**
+ * @author <h1>Abdul Mukit <br> Department of Computer Science of Engineering <br>
+ * Jahangirnagar University</h1>
+ *
+ * <br> <br>
+ * Main Activity is the launcher acticity that initiate that program. <br>
+ * It is designed for Creating Product. <br>
+ * <b>Only Admin can access this activity </b>
+ */
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final int IMAGE_REQUEST = 5;
@@ -37,6 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ProgressBar mProgressBar;
     private Uri mImageUri;
 
+    /**
+     * This method execute at the begining of the activity.<br>
+     * All the component designed in the layout resource file need to bind java format to access <br>
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +74,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Activate if OnclickListener is added to a view and the view is clicked.
+     *
+     * @param v return the view which is clicked
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -70,13 +91,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * This method start an intent that used to open storage the android device <br>
+     * Intnet.ACTION_GET_CONTENT invoke to get a content from storage
+     * A request code need to attach to uniquely identify file
+     */
     public void chooseImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_REQUEST);
     }
 
+    /**
+     * After choosing a file from storage this method execute to receive it
+     * data.getData() contain a URI that is the mapping of the file.
+     *
+     * @param requestCode   Uniquely identify the file
+     * @param resultCode    Check if full content received or not
+     * @param data          hold the content of the file
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -86,8 +119,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * This gather all the Product information inputted by user as <br>
+     * product name, price, Image URI that contain the image data, and product description.
+     * <br>
+     * It then save the information in the <b>Product</b> class object <br>
+     * Finally it call DatabaseHelper to upload the product in firebase databasse
+     *
+     */
 
-    private void uploadData() {
+    public void uploadData() {
         String name = mEdtName.getText().toString().trim();
         if (name.isEmpty()) {
             mEdtName.setError("insert name");
@@ -120,6 +161,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * This is menu method that used to go to Dashboard activity
+     *
+     * @param menu     this menu is mapped with R.menu.main_menu resource file
+     * @return
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,6 +175,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * When a menu item is clicked this method activate to perform action
+     * @param item  represents the data of which manu_item is selected.
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

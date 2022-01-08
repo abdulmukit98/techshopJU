@@ -17,18 +17,39 @@ import edu.cseju.techshopju.R;
 import edu.cseju.techshopju.interfaces.IRefresh;
 import edu.cseju.techshopju.model.Product;
 
+/**
+ * The adaptar class to represent the recyclar view in DashboardActiviy <br>
+ * It recieve a context - where the recyclar view is placed
+ * and the Product list to Display
+ * and an interface provided by Parent activity to perform specified action
+ */
 public class RecyclarViewAdaptar extends RecyclerView.Adapter<RecyclarViewHolder> {
 
     Context context;
     List<Product> products = new ArrayList<Product>();
     IRefresh iRefresh;
 
+    /**
+     * Constructor for adaptar
+     *
+     * @param context   parent context
+     * @param products  List of Products to Display in recyclar view
+     * @param iRefresh  Interface to perform some task delivered from outside the parent class.
+     */
     public RecyclarViewAdaptar(Context context, List<Product> products, IRefresh iRefresh) {
         this.context = context;
         this.products = products;
         this.iRefresh = iRefresh;
     }
 
+    /**
+     * pair the adapter with individual recyclar_item <br>
+     * map the resource file with viewholder
+     *
+     * @param parent        parent context that hold the recyclar view
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public RecyclarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +59,12 @@ public class RecyclarViewAdaptar extends RecyclerView.Adapter<RecyclarViewHolder
         return recyclarViewHolder;
     }
 
+    /**
+     *  map data and image to each viewholder item
+     *
+     * @param holder    ViewHolder Item
+     * @param position  index number
+     */
     @Override
     public void onBindViewHolder(@NonNull RecyclarViewHolder holder, int position) {
         holder.textViewName.setText(products.get(position).getProductName());
@@ -47,6 +74,11 @@ public class RecyclarViewAdaptar extends RecyclerView.Adapter<RecyclarViewHolder
 
     }
 
+    /**
+     * size of products
+     *
+     * @return     total number of products that show in recyclar view
+     */
     @Override
     public int getItemCount() {
         return products.size();

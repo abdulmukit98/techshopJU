@@ -4,6 +4,11 @@ import com.google.firebase.database.annotations.NotNull;
 
 import java.io.Serializable;
 
+/**
+ * Our Model for MVC Architecture <br>
+ * This class save the information of the products <br>
+ * It is used to manipulate products behaviour and Database activities <br>
+ */
 public class Product implements Serializable {
     @NotNull
     private String productId;

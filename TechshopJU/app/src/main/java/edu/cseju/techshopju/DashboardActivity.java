@@ -24,6 +24,12 @@ import edu.cseju.techshopju.model.DatabaseHelper;
 import edu.cseju.techshopju.model.Product;
 import edu.cseju.techshopju.recyclar.RecyclarViewAdaptar;
 
+/**
+ * @author <h1>Abdul Mukit <br> Department of Computer Science of Engineering <br>
+ * Jahangirnagar University</h1>
+ *
+ * This activity contain a recycler view that show all the products available in the Database
+ */
 public class DashboardActivity extends AppCompatActivity implements IRefresh {
 
     DatabaseReference dDatabaseReference;
@@ -32,6 +38,13 @@ public class DashboardActivity extends AppCompatActivity implements IRefresh {
     RecyclarViewAdaptar dRecyclarViewAdaptar;
     IRefresh iRefresh;
 
+    /**
+     * Initiate the variables needed to this activity
+     * It also store all the product data from the database into a List of product <br>
+     * then Pass the data to recyclar view adaptar to show them in recyclar view
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +81,11 @@ public class DashboardActivity extends AppCompatActivity implements IRefresh {
         startActivity(getIntent());
     }
 
+    /**
+     * This method pass the product object to the UpdateActivity to update its content <br>
+     * The product object is passed through intent through putExtra() method
+     * @param product   Product object that need to be updated in firebase
+     */
     @Override
     public void UpdateProduct(Product product) {
         Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);

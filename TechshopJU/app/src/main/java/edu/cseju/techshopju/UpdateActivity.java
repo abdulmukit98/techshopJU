@@ -29,6 +29,14 @@ import com.squareup.picasso.Picasso;
 import edu.cseju.techshopju.model.DatabaseHelper;
 import edu.cseju.techshopju.model.Product;
 
+/**
+ * @author <h1>Abdul Mukit <br>
+ * Department of Computer Science of Engineering <br>
+ * Jahangirnagar University </h1>
+ *
+ * This activity is exactly same as MainActivity, The main difference is it will update the product in
+ * stead of adding a new one
+ */
 public class UpdateActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final int IMG_REQ = 6;
@@ -72,6 +80,10 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    /**
+     * activate when a view is clicked
+     * @param v represent the view id
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -84,13 +96,23 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-
+    /**
+     * Exacty same as Main activity choose image <br>
+     * But it will send a different request code to distinguish from previous one
+     */
     private void chooseImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, IMG_REQ);
     }
 
+    /**
+     * Activate if a content is received to buffer
+     *
+     * @param requestCode      code send with choose intent
+     * @param resultCode       check if file is completely taken
+     * @param data             contain the file URI
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -100,6 +122,17 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     * Update the information of a product <br>
+     * if a discount offer is available- reduce price <br>
+     * if description is changed <br>
+     * if product image updated <br>
+     *
+     * receive the updated info from user. if Image is not uploaded by the use,
+     * it use the previously give one, only update product details info
+     * <br>
+     * if image is changed, it store the updated image into firebase storage along with product detail.
+     */
 
     private void updateProduct() {
         String name = uEdtName.getText().toString().trim();
@@ -140,6 +173,11 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    /**
+     * Used to redirect to Dashboard (Product Display) activity
+     * @param menu          map with menu_resource file
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -147,6 +185,11 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Trigger the menu which is clicked
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
