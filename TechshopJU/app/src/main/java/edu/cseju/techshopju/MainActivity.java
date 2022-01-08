@@ -26,21 +26,19 @@ import com.squareup.picasso.Picasso;
 import edu.cseju.techshopju.model.DatabaseHelper;
 import edu.cseju.techshopju.model.Product;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener
-{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final int IMAGE_REQUEST = 5;
     Button mBtnUpload, mBtnChoose;
     EditText mEdtName, mEdtDescription, mEdtPrice;
     ImageView mImage;
-    private Uri mImageUri;
     DatabaseReference mDatabaseReference;
     StorageReference mStorageReference;
     ProgressBar mProgressBar;
+    private Uri mImageUri;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -61,10 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v)
-    {
-        switch (v.getId())
-        {
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.mBtnChoose:
                 chooseImage();
                 break;
@@ -75,37 +71,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void chooseImage()
-    {
+    public void chooseImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_REQUEST);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData()!=null)
-        {
+        if (requestCode == IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             mImageUri = data.getData();
             Picasso.get().load(mImageUri).fit().into(mImage);
         }
     }
 
 
-    private void uploadData()
-    {
+    private void uploadData() {
         String name = mEdtName.getText().toString().trim();
-        if (name.isEmpty())
-        {
+        if (name.isEmpty()) {
             mEdtName.setError("insert name");
             mEdtName.requestFocus();
             return;
         }
 
-        if (mEdtPrice.getText().toString().isEmpty())
-        {
+        if (mEdtPrice.getText().toString().isEmpty()) {
             mEdtPrice.setError("insert price");
             mEdtPrice.requestFocus();
             return;
@@ -113,8 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int price = Integer.parseInt(mEdtPrice.getText().toString().trim());
         String description = mEdtDescription.getText().toString().trim();
 
-        if (mImageUri == null)
-        {
+        if (mImageUri == null) {
             Toast.makeText(getApplicationContext(), "Choose Image First", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -141,8 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.menuDashboard:
                 startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                 break;

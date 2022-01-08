@@ -24,12 +24,12 @@ import java.util.List;
 
 public class DatabaseHelper {
 
-    private Context context;
-    private String key;
-    private Uri fileUri;
-    private Product product;
-    private DatabaseReference databaseReference;
-    private StorageReference storageReference;
+    private final Context context;
+    private final String key;
+    private final Uri fileUri;
+    private final Product product;
+    private final DatabaseReference databaseReference;
+    private final StorageReference storageReference;
     ProgressBar progressBar;
 
 
@@ -44,16 +44,14 @@ public class DatabaseHelper {
         this.progressBar = progressBar;
     }
 
-    public String getExtentionType(Uri fileUri)
-    {
+    public String getExtentionType(Uri fileUri) {
         ContentResolver contentResolver = context.getContentResolver();
         String extension = contentResolver.getType(fileUri);
-        return extension.substring(extension.indexOf('/') +1);
+        return extension.substring(extension.indexOf('/') + 1);
     }
 
 
-    public void upload()
-    {
+    public void upload() {
         progressBar.setVisibility(View.VISIBLE);
         storageReference.child(key + "." + getExtentionType(fileUri)).putFile(fileUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -66,13 +64,13 @@ public class DatabaseHelper {
                                 String httpUrl = uri.toString();
                                 product.setProductImageLink(httpUrl);
                                 databaseReference.child(key).setValue(product)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        progressBar.setVisibility(View.INVISIBLE);
-                                        Toast.makeText(context, "Uploaded", Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                progressBar.setVisibility(View.INVISIBLE);
+                                                Toast.makeText(context, "Uploaded", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         progressBar.setVisibility(View.INVISIBLE);

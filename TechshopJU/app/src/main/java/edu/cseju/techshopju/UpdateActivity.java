@@ -36,10 +36,10 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
     Button uBtnUpload, uBtnChoose;
     EditText uEdtName, uEdtDescription, uEdtPrice;
     ImageView uImage;
-    private Uri uImageUri;
     DatabaseReference uDatabaseReference;
     StorageReference uStorageReference;
     ProgressBar uProgressBar;
+    private Uri uImageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +74,7 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.uBtnChoose:
                 chooseImage();
                 break;
@@ -95,35 +94,30 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMG_REQ && resultCode == RESULT_OK && data != null && data.getData()!=null)
-        {
+        if (requestCode == IMG_REQ && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uImageUri = data.getData();
             Picasso.get().load(uImageUri).fit().into(uImage);
         }
     }
 
 
-    private void updateProduct()
-    {
+    private void updateProduct() {
         String name = uEdtName.getText().toString().trim();
         String description = uEdtDescription.getText().toString();
-        if (name.isEmpty())
-        {
+        if (name.isEmpty()) {
             uEdtName.setError("Insert name");
             uEdtName.requestFocus();
         }
-        if (uEdtPrice.getText().toString().isEmpty())
-        {
+        if (uEdtPrice.getText().toString().isEmpty()) {
             uEdtPrice.setError("Insert Price");
             uEdtPrice.requestFocus();
         }
         int price = Integer.parseInt(uEdtPrice.getText().toString());
 
         // No New image, use previous one
-        if (uImageUri == null)
-        {
+        if (uImageUri == null) {
             uProgressBar.setVisibility(View.VISIBLE);
-            Product p  = new Product(product.getProductId(), name, price, product.getProductImageLink(), description);
+            Product p = new Product(product.getProductId(), name, price, product.getProductImageLink(), description);
             uDatabaseReference.child(product.getProductId()).setValue(p).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
@@ -137,10 +131,7 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-
-        else if (uImageUri != null)
-        {
+        } else if (uImageUri != null) {
             Product p = new Product(product.getProductId(), name, price, null, description);
             DatabaseHelper helper = new DatabaseHelper(getApplicationContext(), product.getProductId(),
                     uImageUri, p, uDatabaseReference, uStorageReference, uProgressBar);
@@ -158,8 +149,7 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.menuDashboard:
                 startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                 break;

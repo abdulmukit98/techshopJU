@@ -12,8 +12,7 @@ public class Product implements Serializable {
     private String productImageLink;
     private String productDescription;
 
-    public Product()
-    {
+    public Product() {
 
     }
 

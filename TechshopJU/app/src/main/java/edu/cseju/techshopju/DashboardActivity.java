@@ -46,7 +46,7 @@ public class DashboardActivity extends AppCompatActivity implements IRefresh {
         dDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot single: snapshot.getChildren()) {
+                for (DataSnapshot single : snapshot.getChildren()) {
                     Product product = single.getValue(Product.class);
                     products.add(product);
                     dRecyclarViewAdaptar.notifyDataSetChanged();
