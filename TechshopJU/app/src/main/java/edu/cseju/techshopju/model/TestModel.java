@@ -7,24 +7,20 @@ public class TestModel {
     public TestModel() {
     }
 
-    public boolean checkName(String name)
-    {
+    public boolean checkName(String name) {
         if (name.isEmpty())
             return false;
         return true;
     }
 
-    public boolean checkPrice(String price)
-    {
-        if (price.isEmpty() || Integer.parseInt(price) == 0)
-        {
+    public boolean checkPrice(String price) {
+        if (price.isEmpty() || Integer.parseInt(price) == 0) {
             return false;
         }
         return true;
     }
 
-    public boolean checkFileUri(Uri uri)
-    {
+    public boolean checkFileUri(Uri uri) {
         if (uri == null)
             return false;
         return true;
