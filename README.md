@@ -1,7 +1,9 @@
 # TechShopJU
   
-[Wiki] (https://github.com/abdulmukit98/techshopJU/wiki)
-
+Wiki (https://github.com/abdulmukit98/techshopJU/wiki)
+Coding Standards (https://github.com/abdulmukit98/techshopJU/wiki/Coding-Standards)
+Slack Workspace (softwareengin-rr29038.slack.com)
+Trello Board (https://trello.com/b/t0MqvqW9/swe-projects)
 
 ## Task
 
