@@ -25,6 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import edu.cseju.techshopju.model.DatabaseHelper;
 import edu.cseju.techshopju.model.Product;
+import edu.cseju.techshopju.model.TestModel;
 
 /**
  * @author <h1>Abdul Mukit <br> Department of Computer Science of Engineering <br>
@@ -129,29 +130,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
 
     public void uploadData() {
+        TestModel testModel = new TestModel();
+
         String name = mEdtName.getText().toString().trim();
-        if (name.isEmpty()) {
+        if (testModel.checkName(name) == false) {
             mEdtName.setError("insert name");
             mEdtName.requestFocus();
             return;
         }
 
-        if (mEdtPrice.getText().toString().isEmpty()) {
-            mEdtPrice.setError("insert price");
+        String price = mEdtPrice.getText().toString().trim();
+        if (testModel.checkPrice(price) == false) {
+            mEdtPrice.setError("insert valid price");
             mEdtPrice.requestFocus();
             return;
         }
-        int price = Integer.parseInt(mEdtPrice.getText().toString().trim());
+        int priceVal = Integer.parseInt(price);
+
         String description = mEdtDescription.getText().toString().trim();
 
-        if (mImageUri == null) {
+
+        if (testModel.checkFileUri(mImageUri) == false) {
             Toast.makeText(getApplicationContext(), "Choose Image First", Toast.LENGTH_SHORT).show();
             return;
         }
 
         mProgressBar.setVisibility(View.VISIBLE);
         String key = mDatabaseReference.push().getKey();
-        Product product = new Product(key, name, price, null, description);
+        Product product = new Product(key, name, priceVal, null, description);
 
         DatabaseHelper helper = new DatabaseHelper(getApplicationContext(), key,
                 mImageUri, product, mDatabaseReference, mStorageReference, mProgressBar);
@@ -160,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
 
     /**
      * This is menu method that used to go to Dashboard activity

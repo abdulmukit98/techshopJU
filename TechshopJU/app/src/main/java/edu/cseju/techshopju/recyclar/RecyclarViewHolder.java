@@ -83,6 +83,7 @@ public class RecyclarViewHolder extends RecyclerView.ViewHolder implements View.
      */
     @Override
     public boolean onMenuItemClick(MenuItem item) {
+
         switch (item.getItemId())
         {
             case R.id.popup_update:
