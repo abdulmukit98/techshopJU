@@ -8,7 +8,8 @@ import org.junit.Test;
 
 public class TestModelTest {
 
-    private TestModel testModel = new TestModel();
+    private final TestModel testModel = new TestModel();
+
     @Test
     public void empty_name() {
         String name = "";
@@ -22,33 +23,28 @@ public class TestModelTest {
     }
 
     @Test
-    public void nullPrice()
-    {
+    public void nullPrice() {
         String price = "";
         assertEquals(false, testModel.checkPrice(price));
     }
 
     @Test
-    public void zeroPrice()
-    {
+    public void zeroPrice() {
         String price = "0";
         assertEquals(false, testModel.checkPrice(price));
     }
 
     @Test
-    public void validPrice()
-    {
+    public void validPrice() {
         String price = "55";
         assertEquals(true, testModel.checkPrice(price));
     }
 
     @Test
-    public void unvalidUriTest()
-    {
+    public void unvalidUriTest() {
         Uri uri = null;
         assertEquals(false, testModel.checkFileUri(uri));
     }
-
 
 
 }

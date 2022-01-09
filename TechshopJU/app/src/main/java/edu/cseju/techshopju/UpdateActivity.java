@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import edu.cseju.techshopju.model.DatabaseHelper;
 import edu.cseju.techshopju.model.Product;
+import edu.cseju.techshopju.model.TestModel;
 
 /**
  * @author <h1>Abdul Mukit <br>
@@ -135,20 +136,24 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
      */
 
     private void updateProduct() {
+        TestModel testModel = new TestModel();
         String name = uEdtName.getText().toString().trim();
         String description = uEdtDescription.getText().toString();
-        if (name.isEmpty()) {
+        if (testModel.checkName(name) == false) {
             uEdtName.setError("Insert name");
             uEdtName.requestFocus();
+            return;
         }
-        if (uEdtPrice.getText().toString().isEmpty()) {
-            uEdtPrice.setError("Insert Price");
+        String sPrice = uEdtPrice.getText().toString().trim();
+        if (testModel.checkPrice(sPrice) == false) {
+            uEdtPrice.setError("Insert a valid Price");
             uEdtPrice.requestFocus();
+            return;
         }
-        int price = Integer.parseInt(uEdtPrice.getText().toString());
+        int price = Integer.parseInt(sPrice);
 
         // No New image, use previous one
-        if (uImageUri == null) {
+        if (testModel.checkFileUri(uImageUri) == false) {
             uProgressBar.setVisibility(View.VISIBLE);
             Product p = new Product(product.getProductId(), name, price, product.getProductImageLink(), description);
             uDatabaseReference.child(product.getProductId()).setValue(p).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -164,7 +169,7 @@ public class UpdateActivity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        } else if (uImageUri != null) {
+        } else if (testModel.checkFileUri(uImageUri) == true) {
             Product p = new Product(product.getProductId(), name, price, null, description);
             DatabaseHelper helper = new DatabaseHelper(getApplicationContext(), product.getProductId(),
                     uImageUri, p, uDatabaseReference, uStorageReference, uProgressBar);
