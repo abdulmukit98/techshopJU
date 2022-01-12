@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1080714388103",
+    "firebase_url": "https://techshopju-default-rtdb.firebaseio.com",
+    "project_id": "techshopju",
+    "storage_bucket": "techshopju.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080714388103:android:2387b070acb977578d4e22",
+        "android_client_info": {
+          "package_name": "edu.cseju.orderpcb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080714388103-8m4f8umkiqfhovdv18dkb8u2kjolcet9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJi0vmf8NucRzJJLIzZmXzYfLdEWt9p84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080714388103-8m4f8umkiqfhovdv18dkb8u2kjolcet9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080714388103:android:924165c88d839bff8d4e22",
+        "android_client_info": {
+          "package_name": "edu.cseju.techshopju"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080714388103-8m4f8umkiqfhovdv18dkb8u2kjolcet9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJi0vmf8NucRzJJLIzZmXzYfLdEWt9p84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080714388103-8m4f8umkiqfhovdv18dkb8u2kjolcet9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
