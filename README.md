@@ -1,4 +1,4 @@
-# techshopJu
+# Welcome to TechshopJU
 Visit our Projec site here
 
 
