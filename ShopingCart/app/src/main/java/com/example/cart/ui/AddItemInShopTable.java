@@ -4,6 +4,7 @@ package com.example.cart.ui;
 import android.content.Context;
 import android.text.InputType;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -67,7 +68,14 @@ public class AddItemInShopTable {
         etNewCategory.setLayoutParams(paramsForCategoryAndProduct);
         etNewCategory.setHint("New Product");
 
+
+        final TableRow.LayoutParams rowParamsMinus=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,.5f);
+        ImageButton minusButton=new ImageButton(context);
+
         
+
+
+
 
 
 
