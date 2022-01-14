@@ -94,6 +94,31 @@ public class AddItemInShopTable {
 
     }
 
+    private static void addOrRemoveProductSpinner(Spinner productSpinner, final TableRow tr, final EditText etNewProduct) {
+
+        productSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (productSpinner.getSelectedItem().equals("Others"))
+                {
+                    tr.addView(etNewProduct,2);
+                }
+
+                else {
+                    tr.removeView(etNewProduct);
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    }
+
     private static void fetchCategoryAndProduct(DatabaseReference databaseReference, final Context context, final Spinner catSpinner, final Spinner productSpinner, final TableRow tr, final EditText etNewCategory, final EditText etNewProduct) {
 
         fetchCategoriesInSpinner(databaseReference,context,catSpinner);
