@@ -3,14 +3,24 @@ package com.example.cart.ui;
 
 import android.content.Context;
 import android.text.InputType;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import androidx.annotation.NonNull;
+
 import com.example.cart.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Creating this class to create the rows of product and filling the data in that rows
@@ -73,6 +83,11 @@ public class AddItemInShopTable {
         final TableRow.LayoutParams rowParamsMinus=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,.5f);
         ImageButton minusButton=new ImageButton(context);
         minusButton.setImageResource(R.drawable.ic_baseline_indeterminate_check_box_24);
+        minusButton.setLayoutParams(rowParamsMinus);
+
+        fetchUnitInSpinner(databaseReference,context,unitSpinner);
+        fetchCategoryAndProduct(databaseReference,context,catSpinner,productSpinner,tr,etNewCategory,etNewProduct);
+        addOrRemoveProductSpinner(productSpinner,tr,etNewProduct);
 
         
 
@@ -105,6 +120,37 @@ public class AddItemInShopTable {
 
 
 
+
+
+
+
+
+    }
+
+    private static void fetchUnitInSpinner(DatabaseReference databaseReference, final Context context, final Spinner unitSpinner) {
+
+        databaseReference.child("Unit").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final ArrayList<String> unitlist=new ArrayList<>();
+                for(DataSnapshot areaSnapshot:dataSnapshot.getChildren())
+                {
+                    unitlist.add(areaSnapshot.getValue(String.class));
+                }
+
+                Collections.sort(unitlist);
+
+                final ArrayAdapter<String> unitAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,unitlist);
+                unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        })
 
 
 
