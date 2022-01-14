@@ -1,14 +1,16 @@
-package com.example.cart;
+package com.example.cart.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ListShoppingList extends AppCompatActivity {
+import com.example.cart.R;
+
+public class CreateShoppingList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_shopping_list);
+        setContentView(R.layout.activity_create_shopping_list);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.cart;
+package com.example.cart.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import java.util.List;
+import com.example.cart.R;
 
 public class MainActivity extends AppCompatActivity {
     /**

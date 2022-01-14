@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cart">
         <activity
-            android:name=".CreateShoppingList"
+            android:name=".Controller.CreateShoppingList"
             android:exported="false" />
         <activity
-            android:name=".ListShoppingList"
+            android:name=".Controller.ListShoppingList"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Controller.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
