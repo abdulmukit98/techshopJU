@@ -118,18 +118,18 @@ public class AddItemInShopTable {
                             .addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    final ArrayList<String> catlist=new ArrayList<>();
+                                    final ArrayList<String> productlist=new ArrayList<>();
                                     for(DataSnapshot areaSnapshot:dataSnapshot.getChildren())
                                     {
-                                        catlist.add(areaSnapshot.getKey());
+                                        productlist.add(areaSnapshot.getValue(String.class));
                                     }
 
-                                    Collections.sort(catlist);
-                                    catlist.add("Others");
+                                    Collections.sort(productlist);
+                                    productlist.add("Others");
 
-                                    final ArrayAdapter<String> catAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,catlist);
-                                    catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                    catSpinner.setAdapter(catAdapter);
+                                    final ArrayAdapter<String> productAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,productlist);
+                                    productAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                    productSpinner.setAdapter(productAdapter);
 
 
 
