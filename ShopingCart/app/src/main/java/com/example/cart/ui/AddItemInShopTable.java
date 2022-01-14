@@ -89,43 +89,52 @@ public class AddItemInShopTable {
         fetchCategoryAndProduct(databaseReference,context,catSpinner,productSpinner,tr,etNewCategory,etNewProduct);
         addOrRemoveProductSpinner(productSpinner,tr,etNewProduct);
 
+
+    }
+
+    private static void fetchCategoryAndProduct(DatabaseReference databaseReference, final Context context, final Spinner catSpinner, final Spinner productSpinner, final TableRow tr, final EditText etNewCategory, final EditText etNewProduct) {
+
+        fetchCategoriesInSpinner(databaseReference,context,catSpinner);
         
+    }
+
+    private static void fetchCategoriesInSpinner(DatabaseReference databaseReference, final Context context, final Spinner catSpinner) {
+
+        databaseReference.child("categories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final ArrayList<String> catlist=new ArrayList<>();
+                for(DataSnapshot areaSnapshot:dataSnapshot.getChildren())
+                {
+                    catlist.add(areaSnapshot.getValue(String.class));
+                }
+
+                Collections.sort(unitlist);
+
+                final ArrayAdapter<String> unitAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,unitlist);
+                unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                unitSpinner.setAdapter(unitAdapter);
 
 
 
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+        });
 
 
     }
+
+
+    /**
+     *
+     * @param databaseReference
+     * @param context
+     * @param unitSpinner
+     */
 
     private static void fetchUnitInSpinner(DatabaseReference databaseReference, final Context context, final Spinner unitSpinner) {
 
@@ -142,7 +151,9 @@ public class AddItemInShopTable {
 
                 final ArrayAdapter<String> unitAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,unitlist);
                 unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                
+                unitSpinner.setAdapter(unitAdapter);
+
+
 
             }
 
@@ -150,7 +161,7 @@ public class AddItemInShopTable {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        })
+        });
 
 
 
