@@ -3,6 +3,8 @@ package com.example.cart.ui;
 
 import android.content.Context;
 import android.text.InputType;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -95,6 +97,60 @@ public class AddItemInShopTable {
     private static void fetchCategoryAndProduct(DatabaseReference databaseReference, final Context context, final Spinner catSpinner, final Spinner productSpinner, final TableRow tr, final EditText etNewCategory, final EditText etNewProduct) {
 
         fetchCategoriesInSpinner(databaseReference,context,catSpinner);
+        catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedItem=(String) catSpinner.getSelectedItem();
+                if (selectedItem.equals("Others"))
+                {
+                    tr.removeView(productSpinner);
+                    tr.addView(etNewCategory,1);
+                    tr.addView(etNewProduct,2);
+                }
+
+                else {
+                    tr.removeView(etNewCategory);
+                    if (!tr.getChildAt(1).equals(productSpinner))
+                    {
+                        tr.addView(productSpinner,1);
+                    }
+                    databaseReference.child("categories").child(selectedItem)
+                            .addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    final ArrayList<String> catlist=new ArrayList<>();
+                                    for(DataSnapshot areaSnapshot:dataSnapshot.getChildren())
+                                    {
+                                        catlist.add(areaSnapshot.getKey());
+                                    }
+
+                                    Collections.sort(catlist);
+                                    catlist.add("Others");
+
+                                    final ArrayAdapter<String> catAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,catlist);
+                                    catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                    catSpinner.setAdapter(catAdapter);
+
+
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         
     }
 
