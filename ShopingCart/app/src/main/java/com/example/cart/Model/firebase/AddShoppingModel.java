@@ -9,9 +9,9 @@ import java.util.Map;
  */
 
 
-public class AddShoppingModel<map> {
+public class AddShoppingModel {
 
-    map<String, ShoppingItem>Sales;
+    map <String, ShoppingItem>Sales;
 
 
 
@@ -21,7 +21,7 @@ public class AddShoppingModel<map> {
     }
 
 
-    public AddShoppingModel(map<String, ShoppingItem> sales, String date) {
+    public AddShoppingModel(String, ShoppingItem> sales, String date) {
         Sales = sales;
         this.date = date;
     }

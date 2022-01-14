@@ -23,7 +23,7 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     @Override
     public int compareTo(ExpandShopGroup expandShopGroup) {
         String pattern;
-        SimpleDateFormat sdf=new SimpleDateFormat( pattern: "dd-MM-yyyy'T'HH:mm:ssZ );
+        SimpleDateFormat sdf=new SimpleDateFormat(  "dd-MM-yyyy'T'HH:mm:ssZ" );
                 try{
                     return sdf.parse(getDate().compareTo(sdf.parse(expandShopGroup.getDate())));
                 }
