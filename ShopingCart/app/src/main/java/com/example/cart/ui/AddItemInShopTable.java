@@ -2,6 +2,9 @@ package com.example.cart.ui;
 
 
 import android.content.Context;
+import android.text.InputType;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -31,6 +34,31 @@ public class AddItemInShopTable {
          final TableRow.LayoutParams paramsForCategoryAndProduct=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,1.4f);
          final TableRow.LayoutParams paramsForQuantity =new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,.9f);
          final TableRow.LayoutParams paramsForUnit=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,1.4f);
+
+
+         final Spinner catSpinner=new Spinner(context);
+         catSpinner.setLayoutParams(paramsForCategoryAndProduct);
+
+
+         final Spinner productSpinner=new Spinner(context);
+         catSpinner.setLayoutParams(paramsForCategoryAndProduct);
+
+
+         final EditText quantity=new EditText(context);
+         quantity.setLayoutParams(paramsForQuantity);
+         quantity.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+         final Spinner unitSpinner=new Spinner(context);
+         catSpinner.setLayoutParams(paramsForUnit);
+
+         
+
+
+
+
+
+
+
 
 
 
