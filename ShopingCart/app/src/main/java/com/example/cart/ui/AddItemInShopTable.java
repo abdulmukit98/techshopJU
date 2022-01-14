@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.example.cart.R;
 import com.google.firebase.database.DatabaseReference;
 
 /**
@@ -71,8 +72,12 @@ public class AddItemInShopTable {
 
         final TableRow.LayoutParams rowParamsMinus=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,.5f);
         ImageButton minusButton=new ImageButton(context);
+        minusButton.setImageResource(R.drawable.ic_baseline_indeterminate_check_box_24);
 
         
+
+
+
 
 
 
