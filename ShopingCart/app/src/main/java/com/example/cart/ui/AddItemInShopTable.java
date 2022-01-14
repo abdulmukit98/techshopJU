@@ -106,14 +106,15 @@ public class AddItemInShopTable {
                 final ArrayList<String> catlist=new ArrayList<>();
                 for(DataSnapshot areaSnapshot:dataSnapshot.getChildren())
                 {
-                    catlist.add(areaSnapshot.getValue(String.class));
+                    catlist.add(areaSnapshot.getKey());
                 }
 
-                Collections.sort(unitlist);
+                Collections.sort(catlist);
+                catlist.add("Others");
 
-                final ArrayAdapter<String> unitAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,unitlist);
-                unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                unitSpinner.setAdapter(unitAdapter);
+                final ArrayAdapter<String> catAdapter=new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,catlist);
+                catAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                catSpinner.setAdapter(catAdapter);
 
 
 
