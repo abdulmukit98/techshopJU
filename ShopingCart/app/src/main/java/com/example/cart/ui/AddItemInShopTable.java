@@ -51,7 +51,20 @@ public class AddItemInShopTable {
          final Spinner unitSpinner=new Spinner(context);
          catSpinner.setLayoutParams(paramsForUnit);
 
+         final EditText etNewCategory=new EditText(context);
+         etNewCategory.setLayoutParams(paramsForCategoryAndProduct);
+         etNewCategory.setHint("New Category");
+
+
          
+
+
+
+
+
+
+
+
 
 
 
