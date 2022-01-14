@@ -11,13 +11,12 @@ import com.example.cart.R;
 public class MainActivity extends AppCompatActivity {
     /**
      * For Splash Screen
-     */
+     */\
 
     Handler handler;
 
 
-
-
+//    I am testing commit
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
