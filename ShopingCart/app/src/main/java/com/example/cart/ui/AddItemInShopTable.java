@@ -28,7 +28,7 @@ public class AddItemInShopTable {
         TableLayout.LayoutParams paramsForRow=new TableLayout.LayoutParams(0, TableLayout.LayoutParams.WRAP_CONTENT, 1f);
         paramsForRow.setMargins(10,10,0,20);
         tr.setLayoutParams(paramsForRow);
-         TableRow.LayoutParams paramsForCategoryAndProduct=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,1.4f);
+         final TableRow.LayoutParams paramsForCategoryAndProduct=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,1.4f);
          final TableRow.LayoutParams paramsForQuantity =new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,.9f);
          final TableRow.LayoutParams paramsForUnit=new TableRow.LayoutParams(0,TableRow.LayoutParams.WRAP_CONTENT,1.4f);
 

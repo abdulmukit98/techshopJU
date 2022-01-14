@@ -19,6 +19,12 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     private String name;
     private ArrayList<ShoppingItem> Items;
 
+    /**
+     *
+     * @param expandShopGroup
+     * @return
+     */
+
 
     @Override
     public int compareTo(ExpandShopGroup expandShopGroup) {
@@ -59,11 +65,13 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
      * @return
      */
 
-    public String getShoppingId() {
+    public String getShoppingId()
+    {
         return shoppingId;
     }
 
-    public void setShoppingId(String shoppingId) {
+    public void setShoppingId(String shoppingId)
+    {
         this.shoppingId = shoppingId;
     }
 
@@ -72,7 +80,8 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
      * @return
      */
 
-    public String getDate() {
+    public String getDate()
+    {
         return date;
     }
 
@@ -81,11 +90,13 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
      * @param date
      */
 
-    public void setDate(String date) {
+    public void setDate(String date)
+    {
         this.date = date;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -94,7 +105,8 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
      * @param name
      */
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
@@ -103,7 +115,8 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
      * @return
      */
 
-    public ArrayList<ShoppingItem> getItems() {
+    public ArrayList<ShoppingItem> getItems()
+    {
         return Items;
     }
 
@@ -112,7 +125,8 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
      * @param items
      */
 
-    public void setItems(ArrayList<ShoppingItem> items) {
+    public void setItems(ArrayList<ShoppingItem> items)
+    {
         Items = items;
     }
 }

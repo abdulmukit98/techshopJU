@@ -26,19 +26,23 @@ public class AddShoppingModel {
         this.date = date;
     }
 
-    public map<String, ShoppingItem> getSales() {
+    public map<String, ShoppingItem> getSales()
+    {
         return Sales;
     }
 
-    public void setSales(map<String, ShoppingItem> sales) {
+    public void setSales(map<String, ShoppingItem> sales)
+    {
         Sales = sales;
     }
 
-    public String getDate() {
+    public String getDate()
+    {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)
+    {
         this.date = date;
     }
 }
