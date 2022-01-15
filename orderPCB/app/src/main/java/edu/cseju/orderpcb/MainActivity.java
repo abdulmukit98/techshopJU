@@ -8,16 +8,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import edu.cseju.orderpcb.TestModel.TestClass;
 import edu.cseju.orderpcb.controller.HelperClass;
+import edu.cseju.orderpcb.model.PCBDetails;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
@@ -28,8 +41,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     EditText edtWidth, edtHeight;
     TextView tvQuantity, tvCost, tvUploadStatus;
     Button btnSub, btnAdd, btnUploadFile, btnCart;
+    ProgressBar progressBar;
+
     TestClass testClass = new TestClass();
     HelperClass helperClass = new HelperClass();
+
+    DatabaseReference databaseReference;
+    StorageReference storageReference;
     private int mQuantity, mCost;
     private boolean isLayerSingle, isMaskingYes;
     private final boolean uploadStatus = false;
@@ -55,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         btnSub = findViewById(R.id.btnSub);
         btnCart = findViewById(R.id.btnCart);
         btnUploadFile = findViewById(R.id.btnUpload);
+        progressBar = findViewById(R.id.progress);
+        progressBar.setVisibility(View.VISIBLE);
 
         rgMasking.setOnCheckedChangeListener(this);
         rgLayers.setOnCheckedChangeListener(this);
@@ -62,6 +82,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         btnSub.setOnClickListener(this);
         btnUploadFile.setOnClickListener(this);
         btnCart.setOnClickListener(this);
+
+        mCost = 0;
+        databaseReference = FirebaseDatabase.getInstance().getReference("pcb");
+        storageReference = FirebaseStorage.getInstance().getReference("pcb");
 
     }
 
@@ -117,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private void addItem() {
         mQuantity = mQuantity + 1;
         tvQuantity.setText(String.valueOf(mQuantity));
+
+        mCost = calculateCost(edtWidth.getText().toString(), edtHeight.getText().toString(), mQuantity);
+        tvCost.setText(mCost + "");
     }
 
     private void removeItem() {
@@ -124,12 +151,15 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         if (testClass.checkNegetive(mQuantity) == true)
             mQuantity = 0;
         tvQuantity.setText(String.valueOf(mQuantity));
+
+        mCost = calculateCost(edtWidth.getText().toString(), edtHeight.getText().toString(), mQuantity);
+        tvCost.setText(mCost + "");
     }
 
     private void uploadSchematic() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
+        intent.setType("*/*");
         startActivityForResult(intent, REQUEST_PARAM);
     }
 
@@ -138,26 +168,79 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_PARAM && resultCode == RESULT_OK && data != null && data.getData() != null) {
             fileUri = data.getData();
+            tvUploadStatus.setText("Upload Successful");
         }
     }
 
-    private String getFileExtension(Uri fileUri)
+    public String getFileExtension(Uri fileUri)
     {
         ContentResolver contentResolver = getContentResolver();
         String details = contentResolver.getType(fileUri);
         return details.substring(details.indexOf('/') + 1);
     }
 
+    public int calculateCost(String width, String length, int quantity)
+    {
+        double wid = Double.parseDouble(width);
+        double len = Double.parseDouble(length);
+
+        double cost = wid * len * 20 * quantity;
+
+        return (int) cost;
+    }
+
     private void addToCart() {
+
+        if (rbSingle.isChecked() == false && rbDouble.isChecked() == false)
+        {
+            message(getApplicationContext(), "Select Layers type");
+            return;
+        }
+        if (rbYes.isChecked() == false && rbNo.isChecked() == false)
+        {
+            message(getApplicationContext(), "Select Masking");
+        }
+
         if (fileUri == null) {
             message(getApplicationContext(), "upload schemaic");
             return;
         }
         String fileExtension = getFileExtension(fileUri);
-        message(getApplicationContext(), fileExtension);
-        if (!rgLayers.isClickable()){
-            message(getApplicationContext(), "choose layer type");
-        }
+
+        String wid = edtWidth.getText().toString();
+        String len = edtHeight.getText().toString();
+        mCost = calculateCost(wid, len, mQuantity);
+        tvCost.setText(mCost + "");
+
+        String key = databaseReference.push().getKey();
+        PCBDetails pcbDetails = new PCBDetails(key, isLayerSingle, isMaskingYes,
+                                    Double.parseDouble(wid), Double.parseDouble(len), mQuantity);
+
+        progressBar.setVisibility(View.VISIBLE);
+        storageReference.child(key + fileExtension + "").putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        System.out.println(uri.toString());
+                        progressBar.setVisibility(View.INVISIBLE);
+                        pcbDetails.setFileURL(uri.toString());
+                    }
+                });
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressBar.setVisibility(View.INVISIBLE);
+                message(getApplicationContext(), e.getMessage());
+            }
+        });
+
+
 
     }
 }

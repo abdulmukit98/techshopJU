@@ -7,12 +7,22 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:id="@+id/progress"
+        android:indeterminateTint="@color/black"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Order PCB"
         android:textSize="25sp" />
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -193,6 +203,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:text="Add to Cart" />
+        android:text="Place order" />
 
 </LinearLayout>
