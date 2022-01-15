@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.example.cart.Model.common.ShoppingItem;
 import com.example.cart.R;
@@ -51,7 +53,23 @@ public class CreateShoppingList extends AppCompatActivity {
                 Map<String, ShoppingItem> sales=new HashMap<>();
                 Map<String, ShoppingItem> newCatandProd=new HashMap<>();
                 boolean error=false;
-                
+                for (int i=1, j=tableLayoutForCreateShoppingList.getChildCount()-2;i<j;i++)
+                {
+                    View rowView=tableLayoutForCreateShoppingList.getChildAt(i);
+                    if (rowView instanceof TableRow)
+                    {
+                        TableRow row=(TableRow) rowView;
+                        String category, product;
+                        int itemDetailChildCount=row.getChildCount();
+                        String newCategory=null;
+                        String newProduct=null;
+                        Spinner categorySpinner=(Spinner) row.getChildAt(0);
+                        int quantityIndex;
+                        int unitIndex;
+                        
+                    }
+                }
+            }
         });
 
 
