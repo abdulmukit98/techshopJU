@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -66,7 +67,26 @@ public class CreateShoppingList extends AppCompatActivity {
                         Spinner categorySpinner=(Spinner) row.getChildAt(0);
                         int quantityIndex;
                         int unitIndex;
-                        
+                        category=(String) categorySpinner.getSelectedItem();
+                        if (itemDetailChildCount==5)
+                        {
+                            Spinner productSpinner=(Spinner) row.getChildAt(1);
+                            product=(String) productSpinner.getSelectedItem();
+                            quantityIndex=2;
+                            unitIndex=3;
+                        }
+
+                        else {
+                            if (category.equals("Others"))
+                            {
+                                EditText newCategoryEditText=(EditText) row.getChildAt(1);
+                                category=newCategoryEditText.getText().toString();
+                                newCategory=category;
+                                
+                            }
+                        }
+
+
                     }
                 }
             }
