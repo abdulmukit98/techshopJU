@@ -1,76 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order PCB"
-        android:textSize="25sp"
         android:layout_gravity="center_horizontal"
-        />
+        android:text="Order PCB"
+        android:textSize="25sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Layers *"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
     <RadioGroup
+        android:id="@+id/rgroupLayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="10dp"
-        android:id="@+id/groupLayer"
-        >
+        android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/rbSingle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Single"
             android:layout_weight="1"
-            />
+            android:text="Single" />
 
         <RadioButton
+            android:id="@+id/rbDouble"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Double"
             android:layout_weight="1"
-            />
+            android:text="Double" />
     </RadioGroup>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:text="Green Masking *"
-        />
+        android:textSize="20sp" />
+
     <RadioGroup
+        android:id="@+id/rgroupMasking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Yes"
-            android:layout_weight="1"
-            />
-        <RadioButton
+            android:id="@+id/rbYes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="No"
-            />
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/rbNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="No" />
 
     </RadioGroup>
 
@@ -78,124 +76,123 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dimensions (inch)*"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:orientation="horizontal"
-        >
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            android:layout_marginRight="10dp"
-            android:hint="width"
-            />
-        <EditText
+        android:orientation="horizontal">
 
+        <EditText
+            android:id="@+id/edtWidth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:inputType="numberDecimal"
+            android:hint="width"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/edtHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:hint="height"
-            />
+            android:inputType="numberDecimal" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:text="Quantity"
-    />
+        android:textSize="20sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <Button
+            android:id="@+id/btnSub"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="sub"
             android:layout_weight="1"
-            />
+            android:text="sub" />
 
         <TextView
+            android:id="@+id/tvQuantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="1"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            />
+            android:text="0" />
+
         <Button
+            android:id="@+id/btnAdd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Add"
             android:layout_weight="1"
-            />
+            android:text="Add" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="PCB Cost (TK)"
             android:layout_marginBottom="25dp"
-            android:textSize="20sp"
-            />
+            android:layout_weight="1"
+            android:text="PCB Cost (TK)"
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tvCost"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_height="wrap_content"
             android:text="0"
-            android:layout_marginBottom="25dp"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Upload Design File (pdf) *"
-        />
+        android:text="Upload Design File (pdf/zip) *"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <Button
+            android:id="@+id/btnUpload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload"
-            />
+            android:text="Upload" />
+
         <TextView
+            android:id="@+id/tvUploadStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="File Name"
-            android:textSize="20sp"
-            />
+            android:text="Upload Status"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add to Cart"
         android:layout_gravity="right"
-        />
+        android:text="Add to Cart" />
 
 </LinearLayout>
