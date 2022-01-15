@@ -82,8 +82,20 @@ public class CreateShoppingList extends AppCompatActivity {
                                 EditText newCategoryEditText=(EditText) row.getChildAt(1);
                                 category=newCategoryEditText.getText().toString();
                                 newCategory=category;
-                                
+
+
+                                EditText newProductEditText=(EditText) row.getChildAt(2);
+                                product=newProductEditText.getText().toString();
+                                newProduct=product;
+
                             }
+
+                            else {
+                                EditText newProductEditText=(EditText) row.getChildAt(2);
+                                product=newProductEditText.getText().toString();
+                                newProduct=product;
+                            }
+
                         }
 
 
