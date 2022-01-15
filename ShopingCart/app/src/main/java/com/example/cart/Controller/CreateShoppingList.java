@@ -3,6 +3,8 @@ package com.example.cart.Controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.DynamicLayout;
+import android.text.style.DynamicDrawableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import android.widget.TableRow;
 import com.example.cart.Model.common.ShoppingItem;
 import com.example.cart.R;
 import com.example.cart.ui.AddItemInShopTable;
+import com.google.android.gms.common.util.DynamiteApi;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -53,7 +56,7 @@ public class CreateShoppingList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Map<String, ShoppingItem> sales=new HashMap<>();
-                Map<String, ShoppingItem> newCatandProd=new HashMap<>();
+                Map<String, String> newCatandProd=new HashMap<>();
                 boolean error=false;
                 for (int i=1, j=tableLayoutForCreateShoppingList.getChildCount()-2;i<j;i++)
                 {
@@ -113,11 +116,24 @@ public class CreateShoppingList extends AppCompatActivity {
 
                         ShoppingItem shoppingItem=new ShoppingItem(category,product,Integer.valueOf(quantityEditText.getText().toString()),(String) unitSpinner.getSelectedItem());
                         sales.put(UUID.randomUUID().toString(),shoppingItem);
-                        
+                        if (newCategory!=null)
+                        {
+                            newCatandProd.put(newCategory,newProduct);
+                        }
+
+                        else if (newProduct !=null)
+                        {
+                            newCatandProd.put(category,newProduct);
+                        }
 
 
                     }
                 }
+                if (sales.size()==0)
+                {
+                    
+                }
+
             }
         });
 
