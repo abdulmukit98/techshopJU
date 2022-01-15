@@ -49,6 +49,9 @@ public class CreateShoppingList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Map<String, ShoppingItem> sales=new HashMap<>();
+                Map<String, ShoppingItem> newCatandProd=new HashMap<>();
+                boolean error=false;
+                
         });
 
 
