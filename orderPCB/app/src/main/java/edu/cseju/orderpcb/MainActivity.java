@@ -29,9 +29,16 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import edu.cseju.orderpcb.TestModel.TestClass;
-import edu.cseju.orderpcb.controller.HelperClass;
 import edu.cseju.orderpcb.model.PCBDetails;
 
+/**
+ * @author <h3>Abdul Mukit <br> Department of Computer Science and Engineering<br>
+ *     Jahangirnagar University</h3>
+ *
+ * Main Activity is the launcher activity for this features.
+ * It connects the layout with the program. Runs the logic over them.
+ * make them interactive.
+ */
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     private static final int REQUEST_PARAM = 5;
@@ -44,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     ProgressBar progressBar;
 
     TestClass testClass = new TestClass();
-    HelperClass helperClass = new HelperClass();
 
     DatabaseReference databaseReference;
     StorageReference storageReference;
@@ -53,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private final boolean uploadStatus = false;
     private Uri fileUri;
 
+    /**
+     * Runs at the start of the activity. <br>
+     * All the layout_view will be defined here.
+     * initialize setup
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         btnCart = findViewById(R.id.btnCart);
         btnUploadFile = findViewById(R.id.btnUpload);
         progressBar = findViewById(R.id.progress);
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
 
         rgMasking.setOnCheckedChangeListener(this);
         rgLayers.setOnCheckedChangeListener(this);
@@ -89,10 +100,20 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     }
 
+    /**
+     * A simple Toast show with given message
+     * @param context   The contex where toast will be shown.
+     * @param msg   Message which will display
+     */
     void message(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * This method trigger when any radio_button in the radio_group is checked.
+     * @param group         contain the radio_group which is checked
+     * @param checkedId     the id of the button.
+     */
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (group == rgLayers) {
@@ -118,6 +139,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
 
+    /**
+     * Trigger if any button is clicked.
+     * @param v represent the button.
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -138,6 +163,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
 
+    /**
+     * when button add is clicked this method run <br>
+     * it will add the pcb quantity for order, then show in the textview
+     */
     private void addItem() {
         mQuantity = mQuantity + 1;
         tvQuantity.setText(String.valueOf(mQuantity));
@@ -146,6 +175,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tvCost.setText(mCost + "");
     }
 
+    /**
+     * This method run to reduce an quantity of pcb ordered.
+     * the quantity can not be negetive.
+     */
     private void removeItem() {
         mQuantity = mQuantity - 1;
         if (testClass.checkNegetive(mQuantity) == true)
@@ -156,6 +189,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tvCost.setText(mCost + "");
     }
 
+    /**
+     * This button send an intent to read pcb schematic file from android filestorage.
+     * this intent is set for any type of file. <br>
+     *     a reques_param constant is add to uniquely identify the received file
+     */
     private void uploadSchematic() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -163,6 +201,14 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         startActivityForResult(intent, REQUEST_PARAM);
     }
 
+    /**
+     * If the schematic is successfully picked from storage, this method activate. <br>
+     *     it match the request code with the parameter sent with intent to uniquely identify file.
+     *     an Uri (Unique resource identifier) generate to hold the file.
+     * @param requestCode The constant passed with intent
+     * @param resultCode  check is file is fully received
+     * @param data  contain the data of the file.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -172,6 +218,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
     }
 
+    /**
+     * This method receive the file Uri and assume the extension type of the file.
+     * @param fileUri   The Uri of the file
+     * @return          String containing the extension type
+     */
     public String getFileExtension(Uri fileUri)
     {
         ContentResolver contentResolver = getContentResolver();
@@ -179,6 +230,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         return details.substring(details.indexOf('/') + 1);
     }
 
+    /**
+     * This method calculate cost required to place order pcb
+     * @param width     pcb width
+     * @param length    pcb length
+     * @param quantity  no of pcb ordered
+     * @return          Cost to place order
+     */
     public int calculateCost(String width, String length, int quantity)
     {
         double wid = Double.parseDouble(width);
@@ -189,6 +247,14 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         return (int) cost;
     }
 
+    /**
+     * This method run to place the order and save the order information into database (Firebase)
+     * At first check if user properly complete the order process. <br>
+     *     it generate an unique key to identify the order in database <br>
+     *     A progressbar show the database store progress <br>
+     *     if order successfully uploaded , success message given.
+     *     if there is any problem uploading order, a toast is shown containing failure message.
+     */
     private void addToCart() {
 
         if (rbSingle.isChecked() == false && rbDouble.isChecked() == false)
@@ -226,8 +292,20 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     @Override
                     public void onSuccess(Uri uri) {
                         System.out.println(uri.toString());
-                        progressBar.setVisibility(View.INVISIBLE);
+
                         pcbDetails.setFileURL(uri.toString());
+                        databaseReference.child(key).setValue(pcbDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                message(getApplicationContext(), "success");
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                message(getApplicationContext(), e.getMessage());
+                            }
+                        });
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
                 });
 
