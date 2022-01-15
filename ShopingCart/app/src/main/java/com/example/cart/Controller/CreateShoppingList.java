@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class CreateShoppingList extends AppCompatActivity {
 
@@ -96,7 +97,23 @@ public class CreateShoppingList extends AppCompatActivity {
                                 newProduct=product;
                             }
 
+                            quantityIndex=3;
+                            unitIndex=4;
+
                         }
+
+                        EditText quantityEditText=(EditText) row.getChildAt(quantityIndex);
+                        Spinner unitSpinner=(Spinner) row.getChildAt(unitIndex);
+                        if (quantityEditText.getText().length()==0 || Integer.valueOf(quantityEditText.getText().toString())<1))
+                        {
+                            quantityEditText.setError("Quantity must be provided and greater than 0");
+                            error=true;
+                            break;
+                        }
+
+                        ShoppingItem shoppingItem=new ShoppingItem(category,product,Integer.valueOf(quantityEditText.getText().toString()),(String) unitSpinner.getSelectedItem());
+                        sales.put(UUID.randomUUID().toString(),shoppingItem);
+                        
 
 
                     }
