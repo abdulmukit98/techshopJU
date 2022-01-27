@@ -11,6 +11,7 @@ import android.os.Handler;
 import com.example.cart.R;
 
 import java.net.ContentHandler;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     /**
@@ -52,8 +53,13 @@ public class MainActivity extends AppCompatActivity {
             uniqueID=sharedPreferences.getString(PREF_UNIQUE_ID,null);
             if (uniqueID==null)
             {
+                uniqueID="subscriber"+ UUID.randomUUID().toString();
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putString(PREF_UNIQUE_ID,uniqueID);
+                editor.commit();
 
             }
         }
+        return uniqueID;
     }
 }
