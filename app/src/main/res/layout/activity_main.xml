@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:background="@color/purple_500"
+        tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/b4"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please fill up the informations"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+
+
+                >
+            </TextView>
+
+
+
+            <EditText
+                android:id="@+id/name_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_text_format_24"
+                android:background="#72A63B"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                android:maxLength="30"
+
+                >
+            </EditText>
+
+            <EditText
+                android:id="@+id/email_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="@color/perfect"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:maxLength="30"
+                android:inputType="textEmailAddress">
+
+                >
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/phone_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:drawableLeft="@drawable/ic_baseline_local_phone_24"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="@color/perfect"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:maxLength="30"
+                android:inputType="phone">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/add1_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_baseline_house_24"
+                android:hint="Address_1"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="@color/perfect"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:maxLength="500"
+                android:inputType="text">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/add2_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address_2"
+                android:drawableLeft="@drawable/ic_baseline_house_24"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="@color/perfect"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:maxLength="500"
+                android:inputType="text">
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/post_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Postal Code"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_post_add_24"
+                android:textColor="@color/white"
+                android:background="@color/perfect"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="10dp"
+                android:maxLength="30"
+                android:inputType="phone">
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/quantity_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Quantity of Product:"
+                android:drawableLeft="@drawable/ic_baseline_add_shopping_cart_24"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@color/perfect"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="10dp"
+                android:maxLength="10000"
+                android:inputType="phone">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/code_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Product Code no:"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_add_card_24"
+                android:background="@color/perfect"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/black"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:maxLength="30"
+                android:inputType="phone">
+
+            </EditText>
+
+
+
+
+            <Button
+                android:id="@+id/button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/purple_500"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:text="Submit"
+                android:textAllCaps="false"
+
+                >
+            </Button>
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/textView_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:layout_marginTop="25dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/purple_500"
+                ></TextView>
+
+
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/isCorrect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:layout_marginTop="25dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="@color/fire_brick"
+                android:text="Is your provided information correct? If it is correct,then Please click on the 'Right' button or go to 'Payment' option . Otherwise , click on 'Wrong' button  "
+                ></TextView>
+
+
+
+
+            <Button
+                android:id="@+id/payment2"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textSize="30sp"
+                android:backgroundTint="@color/red"
+                android:text=" Wrong "
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                >
+            </Button>
+
+            <Button
+                android:id="@+id/payment1"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textSize="30sp"
+                android:backgroundTint="@color/dark_green"
+                android:text=" Right "
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                >
+            </Button>
+
+            <Button
+                android:id="@+id/payment"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textSize="30sp"
+                android:backgroundTint="@color/purple_500"
+                android:text="Payment"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                >
+            </Button>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
+
