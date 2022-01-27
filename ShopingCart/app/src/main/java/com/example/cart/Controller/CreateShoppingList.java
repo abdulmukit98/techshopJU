@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -162,7 +163,8 @@ public class CreateShoppingList extends AppCompatActivity {
                     {
                         for (String newCat:newCatandProd.keySet())
                         {
-                            
+                            databaseReference.child("categories").child(toCame1Case(newCat)).child(UUID.randomUUID().toString())
+                                    .setValue(toCame1Case(newCatandProd.get(newCat)));
                         }
                     }
 
@@ -170,11 +172,28 @@ public class CreateShoppingList extends AppCompatActivity {
                 }
 
             }
+
+
         });
+    }
+    static private String toCame1Case(String s) {
+        String[] parts=s.split("_");
+        String came1CaseString="";
+        for (String part:parts)
+        {
+            came1CaseString=came1CaseString + toProperCase(part);
 
-
-
-
+        }
+        return came1CaseString;
 
     }
+
+    static String toProperCase(String s)
+    {
+        return s.substring(0,1).toUpperCase() + s.substring(1).toLowerCase();
+        
+    }
+
+
+
 }
