@@ -149,7 +149,22 @@ public class CreateShoppingList extends AppCompatActivity {
                     SimpleDateFormat df=new SimpleDateFormat("dd-MM-yyyy 'T' HH:mm:ssz");
                     String formattedDate=df.format(c);
                     AddShoppingModel shoppingmodel=new AddShoppingModel(sales,formattedDate);
-                    databaseReference.child("shopping").child()
+                    databaseReference.child("shopping").child(MainActivity.getSubscriberId(getApplicationContext()))
+                            .child(saleId).setValue(shoppingmodel);
+
+                    DynamicToast.makeSuccess(getApplicationContext(),"Shopping List Added Successfully", Toast.LENGTH_LONG).show();
+                    int count=tableLayoutForCreateShoppingList.getChildCount();
+                    for (int i=1;i<count;i++){
+                        tableLayoutForCreateShoppingList.removeView(tableLayoutForCreateShoppingList.getChildAt(1));
+                    }
+
+                    if (newCatandProd.size()>0)
+                    {
+                        for (String newCat:newCatandProd.keySet())
+                        {
+                            
+                        }
+                    }
 
 
                 }
