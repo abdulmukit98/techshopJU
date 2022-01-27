@@ -1,6 +1,7 @@
 package com.example.cart.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.dynamicanimation.animation.DynamicAnimation;
 
 import android.os.Bundle;
 import android.text.DynamicLayout;
@@ -11,14 +12,20 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 import com.example.cart.Model.common.ShoppingItem;
+import com.example.cart.Model.firebase.AddShoppingModel;
 import com.example.cart.R;
 import com.example.cart.ui.AddItemInShopTable;
 import com.google.android.gms.common.util.DynamiteApi;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -131,7 +138,20 @@ public class CreateShoppingList extends AppCompatActivity {
                 }
                 if (sales.size()==0)
                 {
-                    
+                    DynamicToast.makeError(getApplicationContext(), "Provide sale", Toast.LENGTH_LONG).show();
+
+                }
+
+                else if (!error)
+                {
+                    String saleId="start_splash_cart"+UUID.randomUUID().toString();
+                    Date c= Calendar.getInstance().getTime();
+                    SimpleDateFormat df=new SimpleDateFormat("dd-MM-yyyy 'T' HH:mm:ssz");
+                    String formattedDate=df.format(c);
+                    AddShoppingModel shoppingmodel=new AddShoppingModel(sales,formattedDate);
+                    databaseReference.child("shopping").child()
+
+
                 }
 
             }

@@ -2,11 +2,15 @@ package com.example.cart.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.cart.R;
+
+import java.net.ContentHandler;
 
 public class MainActivity extends AppCompatActivity {
     /**
@@ -14,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
      */
 
     Handler handler;
+    private static String uniqueID=null;
+    private static final String PREF_UNIQUE_ID= "PREFER_UNIQUE_ID";
+
 
 
 //    I am testing commit 02
@@ -34,8 +41,19 @@ public class MainActivity extends AppCompatActivity {
             }
         },10000);
 
+    }
 
 
+    public synchronized static String getSubscriberId(Context context)
+    {
+        if (uniqueID==null)
+        {
+            SharedPreferences sharedPreferences=context.getSharedPreferences(PREF_UNIQUE_ID, Context.MODE_PRIVATE);
+            uniqueID=sharedPreferences.getString(PREF_UNIQUE_ID,null);
+            if (uniqueID==null)
+            {
 
+            }
+        }
     }
 }
