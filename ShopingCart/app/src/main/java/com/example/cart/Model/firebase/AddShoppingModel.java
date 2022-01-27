@@ -21,7 +21,7 @@ public class AddShoppingModel {
     }
 
 
-    public AddShoppingModel(String, ShoppingItem> sales, String date) {
+    public AddShoppingModel(String, ShoppingItem> Sales, String date) {
         Sales = sales;
         this.date = date;
     }

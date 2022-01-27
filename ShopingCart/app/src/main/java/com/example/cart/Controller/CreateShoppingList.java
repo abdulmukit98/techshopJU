@@ -115,7 +115,7 @@ public class CreateShoppingList extends AppCompatActivity {
 
                         EditText quantityEditText=(EditText) row.getChildAt(quantityIndex);
                         Spinner unitSpinner=(Spinner) row.getChildAt(unitIndex);
-                        if (quantityEditText.getText().length()==0 || Integer.valueOf(quantityEditText.getText().toString())<1))
+                        if (quantityEditText.getText().length()==0 || Integer.valueOf(quantityEditText.getText().toString()<1))
                         {
                             quantityEditText.setError("Quantity must be provided and greater than 0");
                             error=true;

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.TextView;
 
 import com.example.cart.Model.ui.ExpandShopGroup;
 
@@ -61,8 +62,21 @@ public class CreateAndFillValuesInListShoppingRows extends BaseExpandableListAda
         if (view==null)
         {
             LayoutInflater inf=(LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            
+            view=View.inflate(R.layout.expandlist_shopping_group, null);
         }
+
+        TextView tv=(TextView) view.findViewById(R.id.tvGroup);
+        tv.setText(group.getName());
+
+        TextView tvDate=(TextView) view.findViewById(R.id.tvGroupDate);
+        tvDate.setText(group.getDate().split("T")[0]);
+
+        View viewId=view.findViewById(R.id.del);
+        
+
+
+
+
 
         return null;
     }
