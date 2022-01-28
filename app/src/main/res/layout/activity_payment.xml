@@ -8,7 +8,17 @@
     android:background="@drawable/pay"
     tools:context=".Payment">
 
-    
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:text="Cash On Delivery"
+        android:textAllCaps="false"
+        >
+    </Button>
 
     <Button
         android:layout_gravity="center"
