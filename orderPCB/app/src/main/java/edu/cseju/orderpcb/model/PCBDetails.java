@@ -16,25 +16,13 @@ public class PCBDetails
     private boolean isSingle, isMasking;
     private double width, height;
     private String fileURL;
-    private Map<String, String> map = new HashMap<>();
-
-    public Map<String, String> getMap()
-    {
-        return map;
-    }
-
-    public void setMap(Map<String, String> map)
-    {
-        this.map = map;
-    }
 
     /**
      * null constructor
      */
     public PCBDetails()
     {
-        map.put("abc", "something");
-        map.put("def", "nothing");
+
     }
 
     /**

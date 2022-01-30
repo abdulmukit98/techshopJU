@@ -26,4 +26,9 @@ public class TestClass
     {
         return (quantity < 0) ? true : false;
     }
+
+    public boolean validMessage(String msg)
+    {
+        return (msg == null || msg == "")? false: true;
+    }
 }

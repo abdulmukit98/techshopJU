@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     TestClass testClass = new TestClass();
     DatabaseReference databaseReference;
     StorageReference storageReference;
-    private int mQuantity, mCost;
+    private int mQuantity = 0, mCost = 0;
     private boolean isLayerSingle, isMaskingYes;
     private Uri fileUri;
 
@@ -106,7 +106,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
      */
     void message(Context context, String msg)
     {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        if (testClass.validMessage(msg) == true)
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -318,10 +319,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                         System.out.println(uri.toString());
 
                         pcbDetails.setFileURL(uri.toString());
-                        pcbDetails.getMap().put("asd", "asdwad");
-                        pcbDetails.getMap().put("ased", "asdwad");
-                        pcbDetails.getMap().put("asad", "asdwad");
-                        System.out.println(pcbDetails.getMap().toString());
                         databaseReference.child(key).setValue(pcbDetails).addOnSuccessListener(new OnSuccessListener<Void>()
                         {
                             @Override
