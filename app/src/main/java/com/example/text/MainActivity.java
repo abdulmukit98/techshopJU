@@ -13,14 +13,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.text.testModel.TestClass;
+
 public class MainActivity extends AppCompatActivity {
 
-    private EditText name,email,phone, add1,add2,post,quantity,code;
+    private EditText name, email, phone, add1, add2, post, quantity, code;
     private Button button, payment;
     private TextView textView, check;
     private Boolean VALIDATOR = true;
 
     AlertDialog.Builder builder;
+    TestClass testClass = new TestClass();
 
     Button payment1, payment2;
 
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         post = (EditText) findViewById(R.id.post_id);
         quantity = (EditText) findViewById(R.id.quantity_id);
         code = (EditText) findViewById(R.id.code_id);
-        textView= (TextView) findViewById(R.id.textView_id);
+        textView = (TextView) findViewById(R.id.textView_id);
         check = (TextView) findViewById(R.id.isCorrect);
 
         button = (Button) findViewById(R.id.button_id);
@@ -48,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         payment1 = findViewById(R.id.payment1);
         payment2 = findViewById(R.id.payment2);
-
-
-
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -68,40 +68,40 @@ public class MainActivity extends AppCompatActivity {
                 String codee = code.getText().toString();
 
 
-
-                if(codee.isEmpty()){
+                if (codee.isEmpty()) {
                     code.setError("Product Code...?");
                     code.requestFocus();
                     isValid(false);
                 }
 
-                if(quantityy.isEmpty()){
+                if (quantityy.isEmpty()) {
                     quantity.setError("Number of Products?");
                     quantity.requestFocus();
                     isValid(false);
 
                 }
 
-                if(add11.isEmpty()){
+                if (add11.isEmpty()) {
                     add1.setError("Your Address");
                     add1.requestFocus();
                     isValid(false);
                 }
 
-                if(phonee.isEmpty()){
+                //if(phonee.isEmpty()){
+                if (testClass.msgCheck(phonee)) {
                     phone.setError("Your Phone Number Please");
                     phone.requestFocus();
                     isValid(false);
                 }
 
-                if(emaill.isEmpty()){
+                if (emaill.isEmpty()) {
                     email.setError("Please provide an email");
                     email.requestFocus();
                     isValid(false);
 
                 }
 
-                if(name1.isEmpty()){
+                if (name1.isEmpty()) {
                     name.setError("Enter your name");
                     name.requestFocus();
                     isValid(false);
@@ -109,16 +109,15 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                if(VALIDATOR){
-                    textView.setText("Name:   "+name1+"\nEmail:  "+emaill+"\nPhone:  "+phonee+"\nAddress_1:  "+add11+"\nAddress_2:  "+add22+"\nPostal Code:  "+postt+"\nQuantity of Product:  "+quantityy+"\nProduct Code no :  "+codee);
+                if (VALIDATOR) {
+                    textView.setText("Name:   " + name1 + "\nEmail:  " + emaill + "\nPhone:  " + phonee + "\nAddress_1:  " + add11 + "\nAddress_2:  " + add22 + "\nPostal Code:  " + postt + "\nQuantity of Product:  " + quantityy + "\nProduct Code no :  " + codee);
                     findViewById(R.id.isCorrect).setVisibility(View.VISIBLE);
                     findViewById(R.id.textView_id).setVisibility(View.VISIBLE);
                     payment1.setVisibility(View.VISIBLE);
                     payment2.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "Valid", Toast.LENGTH_SHORT).show();
 
-                }
-                else {
+                } else {
                     findViewById(R.id.isCorrect).setVisibility(View.GONE);
                     findViewById(R.id.textView_id).setVisibility(View.GONE);
                     payment1.setVisibility(View.GONE);
@@ -130,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
 
         payment.setOnClickListener(new View.OnClickListener() {
@@ -160,10 +157,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
 
-    public void isValid(Boolean validation){
+    public void isValid(Boolean validation) {
         VALIDATOR = validation;
     }
 
