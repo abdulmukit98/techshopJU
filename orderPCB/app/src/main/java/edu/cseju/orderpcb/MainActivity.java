@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
      * this intent is set for any type of file. <br>
      * a reques_param constant is add to uniquely identify the received file
      */
-    private void uploadSchematic()
+    public void uploadSchematic()
     {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
