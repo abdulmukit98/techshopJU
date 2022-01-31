@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "edu.cseju.orderpcb.ExampleInstrumentedTest", "classedu_1_1cseju_1_1orderpcb_1_1_example_instrumented_test.html", null ],
     [ "edu.cseju.orderpcb.ExampleUnitTest", "classedu_1_1cseju_1_1orderpcb_1_1_example_unit_test.html", null ],
+    [ "edu.cseju.orderpcb.MainActivityTest", "classedu_1_1cseju_1_1orderpcb_1_1_main_activity_test.html", null ],
     [ "RadioGroup.OnCheckedChangeListener", null, [
       [ "edu.cseju.orderpcb.MainActivity", "classedu_1_1cseju_1_1orderpcb_1_1_main_activity.html", null ]
     ] ],

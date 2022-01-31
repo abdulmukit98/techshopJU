@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ismasking_0',['isMasking',['../classedu_1_1cseju_1_1orderpcb_1_1model_1_1_p_c_b_details.html#af49220acffba982e476f4dafa38e2243',1,'edu::cseju::orderpcb::model::PCBDetails']]],
-  ['issingle_1',['isSingle',['../classedu_1_1cseju_1_1orderpcb_1_1model_1_1_p_c_b_details.html#ad2e3166b1e392f847323c8ec43d722ad',1,'edu::cseju::orderpcb::model::PCBDetails']]]
+  ['dimension_5fheight_5fis_5fshown_0',['dimension_height_is_shown',['../classedu_1_1cseju_1_1orderpcb_1_1_main_activity_test.html#a0f84513595dac1bc8be137e4a7b9c8b3',1,'edu::cseju::orderpcb::MainActivityTest']]],
+  ['dimension_5fwidth_5fis_5fshown_1',['Dimension_Width_is_shown',['../classedu_1_1cseju_1_1orderpcb_1_1_main_activity_test.html#adc8877d05f499946315d7ea06ffa00dd',1,'edu::cseju::orderpcb::MainActivityTest']]]
 ];

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['testclass_0',['TestClass',['../classedu_1_1cseju_1_1orderpcb_1_1_test_model_1_1_test_class.html',1,'edu.cseju.orderpcb.TestModel.TestClass'],['../classedu_1_1cseju_1_1orderpcb_1_1_test_model_1_1_test_class.html#a99d89818d8ac6c63d513c8911ac851c2',1,'edu.cseju.orderpcb.TestModel.TestClass.TestClass()']]],
-  ['testclass_2ejava_1',['TestClass.java',['../_test_class_8java.html',1,'']]],
-  ['testclasstesting_2',['TestClassTesting',['../classedu_1_1cseju_1_1orderpcb_1_1_test_model_1_1_test_class_testing.html',1,'edu::cseju::orderpcb::TestModel']]],
-  ['testclasstesting_2ejava_3',['TestClassTesting.java',['../_test_class_testing_8java.html',1,'']]],
-  ['tostring_4',['toString',['../classedu_1_1cseju_1_1orderpcb_1_1model_1_1_p_c_b_details.html#a8f481ab2b09ca271a643944c43ce7abe',1,'edu::cseju::orderpcb::model::PCBDetails']]]
+  ['pcbdetails_0',['PCBDetails',['../classedu_1_1cseju_1_1orderpcb_1_1model_1_1_p_c_b_details.html',1,'edu.cseju.orderpcb.model.PCBDetails'],['../classedu_1_1cseju_1_1orderpcb_1_1model_1_1_p_c_b_details.html#a183b2e3dc2adc347a0b569138e698d89',1,'edu.cseju.orderpcb.model.PCBDetails.PCBDetails()'],['../classedu_1_1cseju_1_1orderpcb_1_1model_1_1_p_c_b_details.html#a4a5fbb6ffbdf302362a64e83e0e007bb',1,'edu.cseju.orderpcb.model.PCBDetails.PCBDetails(String orderId, boolean isSingle, boolean isMasking, double width, double height, int quantity)']]],
+  ['pcbdetails_2ejava_1',['PCBDetails.java',['../_p_c_b_details_8java.html',1,'']]]
 ];
