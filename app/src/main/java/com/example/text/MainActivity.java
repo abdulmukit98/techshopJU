@@ -78,20 +78,23 @@ public class MainActivity extends AppCompatActivity {
                 String codee = code.getText().toString();
 
 
-                if (codee.isEmpty()) {
+                //if (codee.isEmpty()) {
+                if (testClass.msgCheck(codee)) {
                     code.setError("Product Code...?");
                     code.requestFocus();
                     isValid(false);
                 }
 
-                if (quantityy.isEmpty()) {
+                //if (quantityy.isEmpty()) {
+                if (testClass.msgCheck(quantityy)) {
                     quantity.setError("Number of Products?");
                     quantity.requestFocus();
                     isValid(false);
 
                 }
 
-                if (add11.isEmpty()) {
+                //if (add11.isEmpty()) {
+                if (testClass.msgCheck(add11)) {
                     add1.setError("Your Address");
                     add1.requestFocus();
                     isValid(false);
@@ -104,14 +107,16 @@ public class MainActivity extends AppCompatActivity {
                     isValid(false);
                 }
 
-                if (emaill.isEmpty()) {
+                //if (emaill.isEmpty()) {
+                if (testClass.msgCheck(emaill)) {
                     email.setError("Please provide an email");
                     email.requestFocus();
                     isValid(false);
 
                 }
 
-                if (name1.isEmpty()) {
+                //if (name1.isEmpty()) {
+                if (testClass.msgCheck(name1)) {
                     name.setError("Enter your name");
                     name.requestFocus();
                     isValid(false);
@@ -127,7 +132,10 @@ public class MainActivity extends AppCompatActivity {
                     payment2.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "Valid", Toast.LENGTH_SHORT).show();
 
-                } else {
+                }
+
+
+                else {
                     findViewById(R.id.isCorrect).setVisibility(View.GONE);
                     findViewById(R.id.textView_id).setVisibility(View.GONE);
                     payment1.setVisibility(View.GONE);
