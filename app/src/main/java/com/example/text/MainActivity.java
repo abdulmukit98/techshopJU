@@ -27,7 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
     Button payment1, payment2;
 
-
+    /**
+     * <p>
+     * Creating connection with "activity_main". <br>
+     * Finding name, email, phone, quantity, code_id, payment. <br>
+     * @param savedInstanceState
+     * </p>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         button.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
 
@@ -132,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         payment.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Payment.class);
@@ -140,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         payment1.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Payment.class);
@@ -148,6 +166,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         payment2.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 name.requestFocus();
@@ -158,6 +180,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     *
+     * @param validation
+     */
 
     public void isValid(Boolean validation) {
         VALIDATOR = validation;

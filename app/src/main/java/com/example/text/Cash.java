@@ -6,6 +6,11 @@ import android.os.Bundle;
 
 public class Cash extends AppCompatActivity {
 
+    /**
+     * Creating connection with "activity_cash". <br>
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

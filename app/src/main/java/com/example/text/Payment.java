@@ -10,6 +10,11 @@ import android.widget.Toast;
 
 public class Payment extends AppCompatActivity {
 private Button bkash, cash;
+
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,10 @@ private Button bkash, cash;
         cash = findViewById(R.id.cash);
 
         bkash.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Bkash.class);
@@ -28,6 +37,10 @@ private Button bkash, cash;
         });
 
         cash.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Cash.class);
