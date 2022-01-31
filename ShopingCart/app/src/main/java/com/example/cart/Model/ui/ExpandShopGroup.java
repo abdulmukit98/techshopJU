@@ -9,7 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Creating this class to fetch the data from Firebase and display in the Screen
+ * <p>
+ * Creating this class to fetch the data from Firebase and display in the Screen. <br>
+ * </p>
  */
 
 public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializable {
@@ -20,9 +22,10 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     private ArrayList<ShoppingItem> Items;
 
     /**
-     *
-     * @param expandShopGroup
-     * @return
+     * <p>
+     * @param expandShopGroup <br>
+     * @return <br>
+     * </p>
      */
 
 
@@ -40,18 +43,22 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     }
 
     /**
-     *
+     * <p>
+     * Using default Constructor. <br>
+     * </p>
      */
 
     public ExpandShopGroup() {
     }
 
     /**
-     * ExpanShopGroup is a function ...
-     * @param shoppingId
-     * @param date
-     * @param name
-     * @param items
+     * <p>
+     * ExpanShopGroup is a function ... <br>
+     * @param shoppingId <br>
+     * @param date <br>
+     * @param name <br>
+     * @param items <br>
+     * </p>
      */
 
     public ExpandShopGroup(String shoppingId, String date, String name, ArrayList<ShoppingItem> items) {
@@ -62,7 +69,9 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     }
 
     /**
-     * @return
+     * <p>
+     * @return "shoppingId". <br>
+     * </p>
      */
 
     public String getShoppingId()
@@ -70,14 +79,21 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
         return shoppingId;
     }
 
+    /**
+     * <p>
+     * @param shoppingId <br>
+     * </p>
+     */
+
     public void setShoppingId(String shoppingId)
     {
         this.shoppingId = shoppingId;
     }
 
     /**
-     *
-     * @return
+     * <p>
+     * @return "Date". <br>
+     * </p>
      */
 
     public String getDate()
@@ -86,8 +102,9 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     }
 
     /**
-     *
+     * <p>
      * @param date
+     * </p>
      */
 
     public void setDate(String date)
@@ -95,14 +112,21 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
         this.date = date;
     }
 
+    /**
+     * <p>
+     * @return " Name". <br>
+     * </p>
+     */
+
     public String getName()
     {
         return name;
     }
 
     /**
-     *
+     * <p>
      * @param name
+     * </p>
      */
 
     public void setName(String name)
@@ -111,8 +135,9 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     }
 
     /**
-     *
-     * @return Items
+     * <p>
+     * @return "Items". <br>
+     * </p>
      */
 
     public ArrayList<ShoppingItem> getItems()
@@ -121,8 +146,9 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
     }
 
     /**
-     *
+     * <p>
      * @param items
+     * </p>
      */
 
     public void setItems(ArrayList<ShoppingItem> items)

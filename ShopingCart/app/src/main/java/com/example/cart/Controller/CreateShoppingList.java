@@ -40,12 +40,13 @@ public class CreateShoppingList extends AppCompatActivity {
 
 
     /**
-     * For connecting Firebase
-     * Creating connection with activity_create_shopping_list.xml file
-     * Adding more item
-     * Order In table
-     *
-     * @param savedInstanceState
+     * <p>
+     * <H1>@param savedInstanceState</H1> <br>
+     * 1. For connecting Firebase<br>
+     * 2. Creating connection with activity_create_shopping_list.xml file. <br>
+     * 3. Adding more item. <br>
+     * 4. Order In table. <br>
+     * </p>
      */
 
     @Override
@@ -61,8 +62,10 @@ public class CreateShoppingList extends AppCompatActivity {
         addMoreItem.setOnClickListener(new View.OnClickListener() {
 
             /**
-             *
-             * @param view
+             * <P>
+             * <H1> @param view</H1> <br>
+             *Denoting a description of the parameter (or parameters) the method can receive. <br>
+             * </p>
              */
             @Override
             public void onClick(View view) {
@@ -72,7 +75,17 @@ public class CreateShoppingList extends AppCompatActivity {
         });
 
         submitDB=findViewById(R.id.submit);
+
         submitDB.setOnClickListener(new View.OnClickListener() {
+            /**
+             * <p>
+             * <H1> * @param view </H1> <br>
+             * 1. Using Instanceof operator to compare the object to the specified type. <br>
+             * 2. Using if, else condition for the term of selection of values from the set of value. <br>
+             * 3. Dynamic toast used to display themed toasts with icon and text. <br>
+             * 4. works with firebase connection. <br>
+             * </p>
+             */
             @Override
             public void onClick(View view) {
                 Map<String, ShoppingItem> sales=new HashMap<>();
@@ -136,6 +149,7 @@ public class CreateShoppingList extends AppCompatActivity {
 
                         ShoppingItem shoppingItem=new ShoppingItem(category,product,Integer.valueOf(quantityEditText.getText().toString()),(String) unitSpinner.getSelectedItem());
                         sales.put(UUID.randomUUID().toString(),shoppingItem);
+
                         if (newCategory!=null)
                         {
                             newCatandProd.put(newCategory,newProduct);
@@ -188,6 +202,16 @@ public class CreateShoppingList extends AppCompatActivity {
 
         });
     }
+
+    /**
+     * <p>
+     * <H1> @param s </H1>
+     * @return
+     * 1. For Uppercase. <br>
+     * 2. Returning "came1CaseString". <br>
+     * </p>
+     */
+
     static private String toCame1Case(String s) {
         String[] parts=s.split("_");
         String came1CaseString="";
@@ -199,6 +223,15 @@ public class CreateShoppingList extends AppCompatActivity {
         return came1CaseString;
 
     }
+
+
+    /**
+     * <p>
+     * For Lowercase. <br>
+     * @param s <br>
+     * @return <br>
+     * </p>
+     */
 
     static String toProperCase(String s)
     {

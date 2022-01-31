@@ -14,18 +14,21 @@ import java.net.ContentHandler;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
-    /**
-     * For Splash Screen
-     */
 
     Handler handler;
     private static String uniqueID=null;
     private static final String PREF_UNIQUE_ID= "PREFER_UNIQUE_ID";
 
 
-
-//    I am testing commit 02
-
+    /**
+     * <p>
+     * <H1> For Splash Screen </H1>
+     * 1. Delaying Splash Screen for 10000 mili second. <br>
+     * 2. Finding  "activity_main" from Resource layout <br>
+     * 3. Using Handler to send and process the Messages and Runnable objects associated with the thread's MessageQueue .<br>
+     * <B> @param savedInstanceState </B> <br>
+     * </p>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * <p>
      * @param context
      * @return
+     * 1. Using "if" statement for "Unique_Id". <br>
+     * </p>
      */
 
     public synchronized static String getSubscriberId(Context context)
