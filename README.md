@@ -8,7 +8,7 @@
 |Database             | Firebase   | [Schema](https://github.com/abdulmukit98/techshopJU/wiki/Database) |
 |Documentation Tool   | Doxygen| |
 |Unit Testing| JUnit4 | 1.4.0 |
-|UI Testing| Espresso 3.4| |
+|UI Testing| Espresso | 3.4.0 |
 
 ### User Interface
 ![ui](https://github.com/abdulmukit98/techshopJU/blob/main/images/ui/pcbUI.PNG)
