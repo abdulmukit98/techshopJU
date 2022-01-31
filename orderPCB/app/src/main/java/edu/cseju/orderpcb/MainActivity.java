@@ -57,60 +57,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private Uri fileUri;
 
     /**
-     * Runs at the start of the activity. <br>
-     * All the layout_view will be defined here.
-     * initialize setup
-     */
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        rgLayers = findViewById(R.id.rgroupLayer);
-        rgMasking = findViewById(R.id.rgroupMasking);
-        rbSingle = findViewById(R.id.rbSingle);
-        rbDouble = findViewById(R.id.rbDouble);
-        rbYes = findViewById(R.id.rbYes);
-        rbNo = findViewById(R.id.rbNo);
-        edtHeight = findViewById(R.id.edtHeight);
-        edtWidth = findViewById(R.id.edtWidth);
-        tvQuantity = findViewById(R.id.tvQuantity);
-        tvCost = findViewById(R.id.tvCost);
-        tvUploadStatus = findViewById(R.id.tvUploadStatus);
-        btnAdd = findViewById(R.id.btnAdd);
-        btnSub = findViewById(R.id.btnSub);
-        btnCart = findViewById(R.id.btnCart);
-        btnUploadFile = findViewById(R.id.btnUpload);
-        progressBar = findViewById(R.id.progress);
-        progressBar.setVisibility(View.INVISIBLE);
-
-        rgMasking.setOnCheckedChangeListener(this);
-        rgLayers.setOnCheckedChangeListener(this);
-        btnAdd.setOnClickListener(this);
-        btnSub.setOnClickListener(this);
-        btnUploadFile.setOnClickListener(this);
-        btnCart.setOnClickListener(this);
-
-        mCost = 0;
-        databaseReference = FirebaseDatabase.getInstance().getReference("pcb");
-        storageReference = FirebaseStorage.getInstance().getReference("pcb");
-
-    }
-
-    /**
-     * A simple Toast show with given message
-     *
-     * @param context The contex where toast will be shown.
-     * @param msg     Message which will display
-     */
-    void message(Context context, String msg)
-    {
-        if (testClass.validMessage(msg) == true)
-            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    /**
      * This method trigger when any radio_button in the radio_group is checked.
      *
      * @param group     contain the radio_group which is checked
@@ -146,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         //
     }
 
-
     /**
      * Trigger if any button is clicked.
      *
@@ -173,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         //
     }
 
-
     /**
      * when button add is clicked this method run <br>
      * it will add the pcb quantity for order, then show in the textview
@@ -185,6 +129,24 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         mCost = calculateCost(edtWidth.getText().toString(), edtHeight.getText().toString(), mQuantity);
         tvCost.setText(mCost + "");
+    }
+
+    /**
+     * This method calculate cost required to place order pcb
+     *
+     * @param width    pcb width
+     * @param length   pcb length
+     * @param quantity no of pcb ordered
+     * @return Cost to place order
+     */
+    public int calculateCost(String width, String length, int quantity)
+    {
+        double wid = Double.parseDouble(width);
+        double len = Double.parseDouble(length);
+
+        double cost = wid * len * 20 * quantity;
+
+        return (int) cost;
     }
 
     /**
@@ -213,57 +175,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
         startActivityForResult(intent, REQUEST_PARAM);
-    }
-
-    /**
-     * If the schematic is successfully picked from storage, this method activate. <br>
-     * it match the request code with the parameter sent with intent to uniquely identify file.
-     * an Uri (Unique resource identifier) generate to hold the file.
-     *
-     * @param requestCode The constant passed with intent
-     * @param resultCode  check is file is fully received
-     * @param data        contain the data of the file.
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_PARAM && resultCode == RESULT_OK && data != null && data.getData() != null)
-        {
-            fileUri = data.getData();
-            tvUploadStatus.setText("Upload Successful");
-        }
-    }
-
-    /**
-     * This method receive the file Uri and assume the extension type of the file.
-     *
-     * @param fileUri The Uri of the file
-     * @return String containing the extension type
-     */
-    public String getFileExtension(Uri fileUri)
-    {
-        ContentResolver contentResolver = getContentResolver();
-        String details = contentResolver.getType(fileUri);
-        return details.substring(details.indexOf('/') + 1);
-    }
-
-    /**
-     * This method calculate cost required to place order pcb
-     *
-     * @param width    pcb width
-     * @param length   pcb length
-     * @param quantity no of pcb ordered
-     * @return Cost to place order
-     */
-    public int calculateCost(String width, String length, int quantity)
-    {
-        double wid = Double.parseDouble(width);
-        double len = Double.parseDouble(length);
-
-        double cost = wid * len * 20 * quantity;
-
-        return (int) cost;
     }
 
     /**
@@ -349,6 +260,93 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             }
         });
 
+
+    }
+
+    /**
+     * A simple Toast show with given message
+     *
+     * @param context The contex where toast will be shown.
+     * @param msg     Message which will display
+     */
+    void message(Context context, String msg)
+    {
+        if (testClass.validMessage(msg) == true)
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * This method receive the file Uri and assume the extension type of the file.
+     *
+     * @param fileUri The Uri of the file
+     * @return String containing the extension type
+     */
+    public String getFileExtension(Uri fileUri)
+    {
+        ContentResolver contentResolver = getContentResolver();
+        String details = contentResolver.getType(fileUri);
+        return details.substring(details.indexOf('/') + 1);
+    }
+
+    /**
+     * If the schematic is successfully picked from storage, this method activate. <br>
+     * it match the request code with the parameter sent with intent to uniquely identify file.
+     * an Uri (Unique resource identifier) generate to hold the file.
+     *
+     * @param requestCode The constant passed with intent
+     * @param resultCode  check is file is fully received
+     * @param data        contain the data of the file.
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_PARAM && resultCode == RESULT_OK && data != null && data.getData() != null)
+        {
+            fileUri = data.getData();
+            tvUploadStatus.setText("Upload Successful");
+        }
+    }
+
+    /**
+     * Runs at the start of the activity. <br>
+     * All the layout_view will be defined here.
+     * initialize setup
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        rgLayers = findViewById(R.id.rgroupLayer);
+        rgMasking = findViewById(R.id.rgroupMasking);
+        rbSingle = findViewById(R.id.rbSingle);
+        rbDouble = findViewById(R.id.rbDouble);
+        rbYes = findViewById(R.id.rbYes);
+        rbNo = findViewById(R.id.rbNo);
+        edtHeight = findViewById(R.id.edtHeight);
+        edtWidth = findViewById(R.id.edtWidth);
+        tvQuantity = findViewById(R.id.tvQuantity);
+        tvCost = findViewById(R.id.tvCost);
+        tvUploadStatus = findViewById(R.id.tvUploadStatus);
+        btnAdd = findViewById(R.id.btnAdd);
+        btnSub = findViewById(R.id.btnSub);
+        btnCart = findViewById(R.id.btnCart);
+        btnUploadFile = findViewById(R.id.btnUpload);
+        progressBar = findViewById(R.id.progress);
+        progressBar.setVisibility(View.INVISIBLE);
+
+        rgMasking.setOnCheckedChangeListener(this);
+        rgLayers.setOnCheckedChangeListener(this);
+        btnAdd.setOnClickListener(this);
+        btnSub.setOnClickListener(this);
+        btnUploadFile.setOnClickListener(this);
+        btnCart.setOnClickListener(this);
+
+        mCost = 0;
+        databaseReference = FirebaseDatabase.getInstance().getReference("pcb");
+        storageReference = FirebaseStorage.getInstance().getReference("pcb");
 
     }
 }

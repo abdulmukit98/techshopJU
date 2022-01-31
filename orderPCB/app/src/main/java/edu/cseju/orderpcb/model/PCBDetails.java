@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This is out model <br>
+ * This is our model <br>
  * This class contain the information of the pcb we are going to order <br>
  * this model is uploaded in database.
  */

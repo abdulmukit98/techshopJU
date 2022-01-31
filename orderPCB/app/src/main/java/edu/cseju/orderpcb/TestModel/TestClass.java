@@ -27,6 +27,11 @@ public class TestClass
         return (quantity < 0) ? true : false;
     }
 
+    /**
+     * If there is valid message, then show message as toast
+     * @param msg   String message
+     * @return true if message is valid
+     */
     public boolean validMessage(String msg)
     {
         return (msg == null || msg == "")? false: true;

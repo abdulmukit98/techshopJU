@@ -1,6 +1,6 @@
 package edu.cseju.orderpcb.TestModel;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ public class TestClassTesting
     /**
      * check negetive
      * possible test case "boundary testing"
-     *
+     * <p>
      * quantity = 0  false
      * quantity > 0  false
      * quantity < 0  true
@@ -24,6 +24,9 @@ public class TestClassTesting
         assertEquals(true, testClass.checkNegetive(quantity));
     }
 
+    /**
+     * valid quantity, check_negetive false
+     */
     @Test
     public void checkNegetive2()
     {
@@ -31,6 +34,9 @@ public class TestClassTesting
         assertEquals(false, testClass.checkNegetive(quantity));
     }
 
+    /**
+     * null quantity
+     */
     @Test
     public void checkNegetive3()
     {
@@ -51,7 +57,9 @@ public class TestClassTesting
         assertEquals(false, testClass.validMessage(msg));
     }
 
-
+    /**
+     * empty message , expected false
+     */
     @Test
     public void validMessage2()
     {
@@ -59,14 +67,15 @@ public class TestClassTesting
         assertEquals(false, testClass.validMessage(msg));
     }
 
-
+    /**
+     * for valid message
+     */
     @Test
     public void validMessage3()
     {
         String msg = "message msg1";
         assertEquals(true, testClass.validMessage(msg));
     }
-
 
 
 }
