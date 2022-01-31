@@ -36,11 +36,19 @@ public class AddShoppingModel {
         Sales = sales;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDate()
     {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(String date)
     {
         this.date = date;

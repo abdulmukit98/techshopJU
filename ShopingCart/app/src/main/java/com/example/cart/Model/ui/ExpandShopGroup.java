@@ -112,7 +112,7 @@ public class ExpandShopGroup implements Comparable<ExpandShopGroup>, Serializabl
 
     /**
      *
-     * @return
+     * @return Items
      */
 
     public ArrayList<ShoppingItem> getItems()

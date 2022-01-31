@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param context
+     * @return
+     */
 
     public synchronized static String getSubscriberId(Context context)
     {

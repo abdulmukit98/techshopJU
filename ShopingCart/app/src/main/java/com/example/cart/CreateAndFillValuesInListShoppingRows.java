@@ -72,7 +72,7 @@ public class CreateAndFillValuesInListShoppingRows extends BaseExpandableListAda
         tvDate.setText(group.getDate().split("T")[0]);
 
         View viewId=view.findViewById(R.id.del);
-        
+
 
 
 

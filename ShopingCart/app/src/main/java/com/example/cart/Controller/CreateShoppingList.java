@@ -39,8 +39,14 @@ public class CreateShoppingList extends AppCompatActivity {
     Button addMoreItem;
 
 
-
-
+    /**
+     * For connecting Firebase
+     * Creating connection with activity_create_shopping_list.xml file
+     * Adding more item
+     * Order In table
+     *
+     * @param savedInstanceState
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,13 @@ public class CreateShoppingList extends AppCompatActivity {
         tableLayoutForCreateShoppingList=findViewById(R.id.addOrderinTable);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         addMoreItem=findViewById(R.id.addMoreItem);
+
         addMoreItem.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 AddItemInShopTable.addRow(view.getContext(), tableLayoutForCreateShoppingList, databaseReference);
