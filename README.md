@@ -9,6 +9,7 @@
 |Documentation Tool   | Doxygen| |
 |Unit Testing| JUnit4 | [test class](https://github.com/abdulmukit98/techshopJU/blob/orderPCB/orderPCB/app/src/test/java/edu/cseju/orderpcb/TestModel/TestClassTesting.java) |
 |UI Testing| Espresso | [test class](https://github.com/abdulmukit98/techshopJU/blob/orderPCB/orderPCB/app/src/androidTest/java/edu/cseju/orderpcb/MainActivityTest.java) |
+|Instrumented Testing | JUnit | [test class(https://github.com/abdulmukit98/techshopJU/blob/orderPCB/orderPCB/app/src/androidTest/java/edu/cseju/orderpcb/MainActivityInstrumentedTest.java) |
 
 ### User Interface
 ![ui](https://github.com/abdulmukit98/techshopJU/blob/main/images/ui/pcbUI.PNG)
