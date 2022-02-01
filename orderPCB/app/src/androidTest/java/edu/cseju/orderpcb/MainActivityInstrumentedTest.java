@@ -5,13 +5,15 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import androidx.test.rule.ActivityTestRule;
+import androidx.test.rule.*;
+import static androidx.test.espresso.Espresso.*;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.StorageReference;
@@ -26,6 +28,20 @@ public class MainActivityInstrumentedTest
 {
     @Rule
     public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class);
+
+    /**
+     * Create our own IntentTestRule For MainActivitys Intent
+     */
+    public static class IntentsTestRule extends ActivityTestRule<MainActivity>
+    {
+        public IntentsTestRule(Class<MainActivity> activityClass)
+        {
+            super(activityClass);
+        }
+    }
+
+    @Rule
+    public IntentsTestRule intentsTestRule = new IntentsTestRule(MainActivity.class);
 
     /**
      * Activity testing
@@ -81,7 +97,7 @@ public class MainActivityInstrumentedTest
         assertEquals("edu.cseju.orderpcb", context.getPackageName());
     }
 
-    
+
     @Test
     public void onCheckedChanged()
     {
@@ -93,9 +109,11 @@ public class MainActivityInstrumentedTest
     public void uploadSchematic()
     {
         MainActivity mainActivity = rule.getActivity();
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-
-
+        //Intent intent = intentsTestRule.getActivity().getIntent();
+        //Intent intent = new Intent();
+        //intent.setType(Intent.ACTION_GET_CONTENT);
+        //intent.setAction("*/*");
+        //Intent intent = rule.getActivity()
     }
 
 
