@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.text.testModel.TestClass;
+//import com.example.text.testModel.TestClass;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,17 +23,11 @@ public class MainActivity extends AppCompatActivity {
     private Boolean VALIDATOR = true;
 
     AlertDialog.Builder builder;
-    TestClass testClass = new TestClass();
+    //TestClass testClass = new TestClass();
 
     Button payment1, payment2;
 
-    /**
-     * <p>
-     * Creating connection with "activity_main". <br>
-     * Finding name, email, phone, quantity, code_id, payment. <br>
-     * @param savedInstanceState
-     * </p>
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         button.setOnClickListener(new View.OnClickListener() {
-            /**
-             *
-             * @param view
-             */
+
             @Override
             public void onClick(View view) {
 
@@ -78,45 +69,45 @@ public class MainActivity extends AppCompatActivity {
                 String codee = code.getText().toString();
 
 
-                //if (codee.isEmpty()) {
-                if (testClass.msgCheck(codee)) {
+                if (codee.isEmpty()) {
+                //if (testClass.msgCheck(codee)) {
                     code.setError("Product Code...?");
                     code.requestFocus();
                     isValid(false);
                 }
 
-                //if (quantityy.isEmpty()) {
-                if (testClass.msgCheck(quantityy)) {
+                if (quantityy.isEmpty()) {
+               // if (testClass.msgCheck(quantityy)) {
                     quantity.setError("Number of Products?");
                     quantity.requestFocus();
                     isValid(false);
 
                 }
 
-                //if (add11.isEmpty()) {
-                if (testClass.msgCheck(add11)) {
+                if (add11.isEmpty()) {
+                //if (testClass.msgCheck(add11)) {
                     add1.setError("Your Address");
                     add1.requestFocus();
                     isValid(false);
                 }
 
-                //if(phonee.isEmpty()){
-                if (testClass.msgCheck(phonee)) {
+                if(phonee.isEmpty()){
+                //if (testClass.msgCheck(phonee)) {
                     phone.setError("Your Phone Number Please");
                     phone.requestFocus();
                     isValid(false);
                 }
 
-                //if (emaill.isEmpty()) {
-                if (testClass.msgCheck(emaill)) {
+                if (emaill.isEmpty()) {
+                //if (testClass.msgCheck(emaill)) {
                     email.setError("Please provide an email");
                     email.requestFocus();
                     isValid(false);
 
                 }
 
-                //if (name1.isEmpty()) {
-                if (testClass.msgCheck(name1)) {
+                if (name1.isEmpty()) {
+                //if (testClass.msgCheck(name1)) {
                     name.setError("Enter your name");
                     name.requestFocus();
                     isValid(false);
@@ -150,10 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         payment.setOnClickListener(new View.OnClickListener() {
-            /**
-             *
-             * @param view
-             */
+
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Payment.class);
@@ -162,10 +150,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         payment1.setOnClickListener(new View.OnClickListener() {
-            /**
-             *
-             * @param view
-             */
+
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Payment.class);
@@ -174,10 +159,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         payment2.setOnClickListener(new View.OnClickListener() {
-            /**
-             *
-             * @param view
-             */
+
             @Override
             public void onClick(View view) {
                 name.requestFocus();
@@ -189,10 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     *
-     * @param validation
-     */
+
 
     public void isValid(Boolean validation) {
         VALIDATOR = validation;
