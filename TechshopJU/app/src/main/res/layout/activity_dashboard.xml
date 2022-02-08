@@ -11,6 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:scrollbarThumbVertical="@color/black"
+        android:scrollbarSize="7dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
