@@ -8,6 +8,6 @@ Visit our Project site here https://abdulmukit98.github.io/techshopJU/
 
 
 ## Task
-* Slack Workspace softwareengin-rr29038.slack.com
-* trello board trello.com/b/t0MqvqW9/swe-projects
+* Slack Workspace `softwareengin-rr29038.slack.com`
+* trello board `trello.com/b/t0MqvqW9/swe-projects`
 * 
