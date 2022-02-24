@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.ListShoppingList">
+
+    <include
+        android:id="@+id/container_header_lyt"
+        layout="@layout/listshoppingview"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        
+
+        >
+
+    </include>
+
+
+    <ImageButton
+        android:id="@+id/addButton"
+        android:layout_width="67dp"
+        android:layout_height="57dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="27dp"
+
+
+        android:layout_marginBottom="20dp"
+
+        android:src="@drawable/ic_baseline_add_circle_24">
+
+    </ImageButton>
+
+
+</RelativeLayout>
